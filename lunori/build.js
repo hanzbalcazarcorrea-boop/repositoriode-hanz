@@ -6,7 +6,7 @@ const fs = require('fs');
 const path = require('path');
 const { chromium } = require('playwright');
 
-const products = ['comprension', 'actividades', 'kit-emociones']
+const products = ['comprension', 'matematica', 'actividades', 'kit-emociones']
   .filter((m) => fs.existsSync(path.join(__dirname, 'src', m)) || fs.existsSync(path.join(__dirname, 'src', m + '.js')))
   .flatMap((m) => [].concat(require('./src/' + m)));
 

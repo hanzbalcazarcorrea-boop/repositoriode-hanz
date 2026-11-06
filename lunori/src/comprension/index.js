@@ -309,3 +309,6 @@ module.exports = EDITIONS.map((ed) => ({
     return doc(`Súper Lector · Comprensión · ${ed.age}`, pages);
   },
 }));
+
+// Piezas reutilizadas por el cuaderno de problemas matemáticos (Súper Mate).
+module.exports.helpers = { renderQ, answer, writeLines, PASTEL, LETTERS };
