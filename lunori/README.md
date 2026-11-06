@@ -1,19 +1,17 @@
 # Productos digitales Lunori
 
-Cuatro infoproductos imprimibles (PDF A4) con la identidad de lunoriperu.com: tipografías Fredoka y Nunito, azul `#1E2A5A`, naranja `#F28C28`, crema `#FFF8EE` y los personajes de Súper Lector.
+Infoproductos imprimibles (PDF A4) con la identidad de lunoriperu.com: tipografías Fredoka y Nunito, azul `#1E2A5A`, naranja `#F28C28`, crema `#FFF8EE` y los personajes de Súper Lector.
+
+Súper Lector · Comprensión y Súper Mate tienen **4 edades × 3 niveles** (Nivel 1 · Despegue, Nivel 2 · Vuelo, Nivel 3 · Súper lector / Súper mate), con los mismos nombres de nivel que *Súper Lector en 21 días*. En total son 24 cuadernos de 10 lecturas o retos cada uno.
 
 | PDF | Qué es | Páginas |
 |---|---|---|
-| `pdf/Super-Lector-Comprension-5-anos.pdf` | Cuaderno de comprensión lectora · 5 años | 17 |
-| `pdf/Super-Lector-Comprension-6-7-anos.pdf` | Cuaderno de comprensión lectora · 6 a 7 años | 17 |
-| `pdf/Super-Lector-Comprension-8-9-anos.pdf` | Cuaderno de comprensión lectora · 8 a 9 años | 18 |
-| `pdf/Super-Lector-Comprension-10-12-anos.pdf` | Cuaderno de comprensión lectora · 10 a 12 años | 18 |
-| `pdf/Super-Mate-Problemas-5-anos.pdf` | Cuaderno de problemas matemáticos · 5 años | 17 |
-| `pdf/Super-Mate-Problemas-6-7-anos.pdf` | Cuaderno de problemas matemáticos · 6 a 7 años | 18 |
-| `pdf/Super-Mate-Problemas-8-9-anos.pdf` | Cuaderno de problemas matemáticos · 8 a 9 años | 18 |
-| `pdf/Super-Mate-Problemas-10-12-anos.pdf` | Cuaderno de problemas matemáticos · 10 a 12 años | 18 |
+| `pdf/Super-Lector-Comprension-<edad>-Nivel-<1|2|3>.pdf` | Comprensión lectora · 5, 6-7, 8-9 y 10-12 años · 12 cuadernos | 17-18 |
+| `pdf/Super-Mate-Problemas-<edad>-Nivel-<1|2|3>.pdf` | Problemas matemáticos · 5, 6-7, 8-9 y 10-12 años · 12 cuadernos | 17-18 |
 | `pdf/100-Planes-sin-Pantallas.pdf` | 100 actividades sin pantallas · 3 a 12 años | 18 |
 | `pdf/Kit-Emociones-y-Rutinas.pdf` | Kit de emociones y rutinas visuales · 3 a 10 años | 21 |
+
+`<edad>` puede ser `5-anos`, `6-7-anos`, `8-9-anos` o `10-12-anos`.
 
 ## Cómo encajan con lo que ya tiene Lunori
 
@@ -41,8 +39,8 @@ El script avisa si algún contenido se sale de la página o si una tarjeta queda
 
 ## Dónde se edita cada cosa
 
-- Textos de las lecturas: `src/comprension/data-*.js`, un archivo por edad. El diseño de las páginas está en `src/comprension/index.js`.
-- Problemas de Súper Mate: `src/matematica/data-*.js`, un archivo por edad. El diseño está en `src/matematica/index.js`.
+- Textos de las lecturas: `src/comprension/data-<edad>.js` (Nivel 1), `data-<edad>-n2.js` y `data-<edad>-n3.js`. Si creas un archivo de nivel nuevo, el build lo detecta solo. El diseño de las páginas está en `src/comprension/index.js`.
+- Problemas de Súper Mate: `src/matematica/data-<edad>.js`, `-n2.js` y `-n3.js`, igual que en comprensión. El diseño está en `src/matematica/index.js`.
 - Las 100 actividades: `src/actividades-data.js`. El diseño está en `src/actividades.js`.
 - El kit: `src/kit-emociones.js`.
 - Colores, tipografías, caritas de emociones y pie de página: `src/base.js`.

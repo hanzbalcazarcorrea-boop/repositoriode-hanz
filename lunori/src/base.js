@@ -152,7 +152,9 @@ function face(name, size = 120, opts = {}) {
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
 function doc(title, pages) {
-  return `<!doctype html><html lang="es"><head><meta charset="utf-8"><title>${esc(title)}</title><style>${CSS}</style></head><body>${pages.join('\n')}</body></html>`;
+  // «S/» nunca se separa del número y la raya de diálogo no queda sola al final de una línea.
+  const body = pages.join('\n').replace(/S\/ (?=\d)/g, 'S/&nbsp;').replace(/—(?=[\p{L}¿¡])/gu, '—\u2060');
+  return `<!doctype html><html lang="es"><head><meta charset="utf-8"><title>${esc(title)}</title><style>${CSS}</style></head><body>${body}</body></html>`;
 }
 
 // Separador de parte (página de color), como en las guías Lunori.

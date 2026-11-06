@@ -141,7 +141,7 @@ function lecturaPage(ed, L, idx, pageNo) {
     ? `<div style="display:flex;justify-content:center;margin:${ed.mode === 'adv' ? '-1mm 0 0' : '0'}">${img(L.img, `height:${ed.mode === 'adv' ? 30 : ed.mode === 'mid' ? 36 : 44}mm;border-radius:6mm`, 'mult')}</div>`
     : '';
   const instr = isPre
-    ? 'Mamá lee el cuento en voz alta dos veces, con el dedo debajo de cada línea. Luego tú respondes.'
+    ? `Mamá lee ${L.type && !/cuento/i.test(L.type) ? 'el texto' : 'el cuento'} en voz alta dos veces, con el dedo debajo de cada línea. Luego tú respondes.`
     : ed.mode === 'basic'
       ? 'Lee el texto en voz alta. Si quieres, léelo dos veces. Luego responde.'
       : 'Lee el texto con atención. Puedes volver a él para buscar las respuestas.';
@@ -151,7 +151,7 @@ function lecturaPage(ed, L, idx, pageNo) {
   <div style="background:${p.bg};border-radius:5mm;padding:3.5mm 5mm;display:flex;align-items:center;gap:4mm;">
     <div style="width:15mm;height:15mm;border-radius:50%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;flex:none"><span class="f" style="font-size:6.5pt;color:${p.ink};letter-spacing:.3mm">LECTURA</span><span class="f" style="font-size:16pt;color:${p.ink};line-height:1">${idx + 1}</span></div>
     <div style="flex:1">
-      <div class="kick" style="color:${p.ink};margin-bottom:.5mm">${L.type ? L.type + ' · ' : ''}Hoy: ${L.skill}</div>
+      <div class="kick" style="color:${p.ink};margin-bottom:.5mm;${((L.type || '') + L.skill).length > 38 ? 'font-size:7.3pt;letter-spacing:.5mm' : ''}">${L.type ? L.type + ' · ' : ''}Hoy: ${L.skill}</div>
       <h2 style="margin:0;font-size:${ed.mode === 'adv' ? '18pt' : '20pt'}">${L.title}</h2>
     </div>
     ${art}
