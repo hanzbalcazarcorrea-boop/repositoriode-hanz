@@ -48,6 +48,8 @@ const products = ['comprension', 'actividades', 'kit-emociones']
         await els[i].screenshot({ path: path.join(prevDir, `${p.file}-${String(i + 1).padStart(2, '0')}.png`) });
       }
     }
+    const clipped = await page.evaluate(() => [...document.querySelectorAll('[data-fit]')].filter((e) => e.scrollHeight > e.clientHeight + 1).map((e) => e.textContent.trim().slice(0, 30)));
+    if (clipped.length) console.log('  ⚠ texto cortado en: ' + clipped.join(' | '));
     console.log(`${p.file}.pdf  (${n} páginas)${overflow.length ? '  ⚠ desborde en páginas: ' + overflow.join(', ') : ''}`);
   }
   await browser.close();
