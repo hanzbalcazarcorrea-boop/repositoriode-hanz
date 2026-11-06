@@ -1,5 +1,8 @@
 // Súper Mate · 5 años · Nivel 2 (Vuelo): números hasta 10, comparar, juntar y quitar, ordinales, patrones de 3 y medir.
 // Mamá lee el problema en voz alta; el niño cuenta, encierra, dibuja o responde en voz alta.
+// Números en fila (letra Fredoka, sin separar las cifras) y patrones largos un poco más pequeños para que quepan junto a las opciones.
+const nums = (s) => `<span style="white-space:nowrap;letter-spacing:0">${s.split(' ').map((x) => (x === '❓' ? x : `<span style="font-family:Fredoka;font-weight:600;color:#1E2A5A">${x}</span>`)).join('<span style="display:inline-block;width:5mm"></span>')}</span>`;
+const pat = (s) => `<span style="font-size:21pt;letter-spacing:1mm;white-space:nowrap">${s}</span>`;
 const RACE = [['🐒', 'mono'], ['🦜', 'guacamayo'], ['🐸', 'rana'], ['🐢', 'Pipa'], ['🦥', 'perezoso']];
 
 module.exports = {
@@ -67,9 +70,9 @@ module.exports = {
       title: 'La chalina de la abuela', skill: 'Patrones de 3', art: '🧶',
       lu: 'Busca el grupito que se repite y dilo como una canción: rojo, amarillo, azul… ¡rojo, amarillo, azul!',
       qs: [
-        { t: 'seq', q: 'La abuela teje una chalina con 3 colores. ¿Qué color sigue?', row: '🟥🟨🟦🟥🟨🟦❓', o: [['🟦', 'azul'], ['🟥', 'rojo'], ['🟨', 'amarillo']], a: 1 },
-        { t: 'seq', q: 'Ahora el grupito es estrella, luna, luna. ¿Qué sigue?', row: '⭐🌙🌙⭐🌙🌙⭐❓', o: [['⭐', 'estrella'], ['🌙', 'luna'], ['☀️', 'sol']], a: 1 },
-        { t: 'seq', q: 'Aquí falta un color en el medio. ¿Cuál es?', row: '🟩🟪🟧🟩❓🟧', o: [['🟧', 'naranja'], ['🟩', 'verde'], ['🟪', 'morado']], a: 2 },
+        { t: 'seq', q: 'La abuela teje una chalina con 3 colores. ¿Qué color sigue?', row: pat('🟥🟨🟦🟥🟨🟦❓'), o: [['🟦', 'azul'], ['🟥', 'rojo'], ['🟨', 'amarillo']], a: 1 },
+        { t: 'seq', q: 'Ahora el grupito es estrella, luna, luna. ¿Qué sigue?', row: pat('⭐🌙🌙⭐🌙🌙❓'), o: [['⭐', 'estrella'], ['🌙', 'luna'], ['☀️', 'sol']], a: 0 },
+        { t: 'seq', q: 'Aquí falta un color en el medio. ¿Cuál es?', row: pat('🟩🟪🟧🟩❓🟧'), o: [['🟧', 'naranja'], ['🟩', 'verde'], ['🟪', 'morado']], a: 2 },
         { t: 'draw', q: 'Inventa tu chalina con 3 colores que se repiten.', h: 28 },
       ],
       tip: 'Armen patrones con tapitas de 3 colores y tapen una pieza con la mano: que descubra cuál falta. Después, que él te arme uno a ti.',
@@ -100,9 +103,9 @@ module.exports = {
       title: 'La escalera de Tito', skill: 'Antes y después', img: 'tito.jpg',
       lu: 'El número que va después es uno más. El que va antes es uno menos. ¡Sube y baja la escalera contando!',
       qs: [
-        { t: 'count', q: 'Tito sube la escalera contando. ¿Qué número falta?', rows: ['5 6 ❓ 8'], o: [6, 7, 9], a: 7 },
-        { t: 'count', q: '¿Qué número va justo antes del 10?', rows: ['❓ 10'], o: [8, 9, 11], a: 9 },
-        { t: 'count', q: 'Ahora Tito baja contando hacia atrás. ¿Qué número falta?', rows: ['10 9 ❓ 7'], o: [6, 8, 11], a: 8 },
+        { t: 'count', q: 'Tito sube la escalera contando. ¿Qué número falta?', rows: [nums('5 6 ❓ 8')], o: [6, 7, 9], a: 7 },
+        { t: 'count', q: '¿Qué número va justo antes del 10?', rows: [nums('❓ 10')], o: [8, 9, 11], a: 9 },
+        { t: 'count', q: 'Ahora Tito baja contando hacia atrás. ¿Qué número falta?', rows: [nums('10 9 ❓ 7')], o: [6, 8, 11], a: 8 },
         { t: 'say', q: 'Tito está en el escalón 6 y sube un escalón más. ¿En qué escalón está ahora?', a: 'En el 7: es el número que va después del 6.' },
       ],
       tip: 'Jueguen a «¿qué número viene?» al subir escaleras o esperar en una fila: tú dices un número y él dice el que va después, o el que va antes.',

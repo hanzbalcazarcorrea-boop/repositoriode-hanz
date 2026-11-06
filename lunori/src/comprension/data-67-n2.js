@@ -65,9 +65,9 @@ module.exports = {
       tip: '¡Prepárenla de verdad! Que él lea cada paso en voz alta antes de hacerlo: leer para hacer algo es la mejor prueba de comprensión.',
       qs: [
         { t: 'order', q: 'Escribe 1, 2, 3 y 4 en el orden correcto.', o: ['Echa el agua poco a poco y amasa.', 'Forma animales o frutas.', 'Mezcla la harina y la sal.', 'Echa unas gotas de colorante.'], a: [2, 4, 1, 3] },
-        { t: 'choice', q: '¿Qué haces si la masa se pega en tus dedos?', o: ['le echas más agua', 'le agregas un poquito más de harina', 'la botas a la basura'], a: 1 },
+        { t: 'choice', q: '¿Qué haces si la masa se pega en tus dedos?', o: ['le echas más agua', 'le agregas más harina', 'la botas'], a: 1 },
         { t: 'open', q: '¿Por qué no debes comer esta masa?', lines: 1, a: 'Porque tiene muchísima sal: no es comida.' },
-        { t: 'draw', q: 'Dibuja lo que te gustaría modelar con tu masa.', h: 30 },
+        { t: 'say', q: '¿Qué te gustaría modelar con tu masa? ¿Por qué?', a: 'Respuesta libre.' },
       ],
     },
     {

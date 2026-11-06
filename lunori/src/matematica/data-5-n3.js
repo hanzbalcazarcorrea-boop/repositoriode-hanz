@@ -1,6 +1,8 @@
 // Súper Mate · 5 años · Nivel 3 (Súper mate): hasta 20, ¿cuántos faltan?, dobles, monedas, días de la semana, dos pasos y explicar cómo lo pensó.
 // Mamá lee el problema en voz alta; el niño cuenta, encierra, dibuja o responde en voz alta.
 const coin = (v) => `<span style="display:inline-flex;align-items:center;justify-content:center;width:14mm;height:14mm;border-radius:50%;background:#FFE7B8;border:2px solid #C2620A;box-shadow:inset 0 0 0 1.2mm #FFF4C9;font-family:Fredoka;font-weight:600;font-size:11pt;color:#1E2A5A;letter-spacing:0;vertical-align:middle;margin:0 .8mm">S/&nbsp;${v}</span>`;
+// Números en fila con letra Fredoka y sin separar las cifras (15, no «1 5»).
+const nums = (s) => `<span style="white-space:nowrap;letter-spacing:0">${s.split(' ').map((x) => (x === '❓' ? x : `<span style="font-family:Fredoka;font-weight:600;color:#1E2A5A">${x}</span>`)).join('<span style="display:inline-block;width:5mm"></span>')}</span>`;
 const WEEK = [['lunes', '🎨'], ['martes', '🎵'], ['miércoles', '⚽'], ['jueves', '📚'], ['viernes', '🍳'], ['sábado', '🛒'], ['domingo', '👵']];
 
 module.exports = {
@@ -13,8 +15,8 @@ module.exports = {
       lu: 'Si ya sabes que un grupo tiene 10, no vuelvas a contarlo: di «diez» y sigue: once, doce, trece…',
       qs: [
         { t: 'count', q: 'De la piñata caen 10 caramelos y después 3 más. ¿Cuántos caramelos son?', rows: ['🍬🍬🍬🍬🍬<br>🍬🍬🍬🍬🍬', '🍬🍬🍬'], op: '+', o: [12, 13, 14], a: 13 },
-        { t: 'count', q: 'Killa pegó estrellas en su cuaderno. ¿Cuántas hay? Cuenta el grupo de 10 y sigue: once, doce…', rows: ['⭐⭐⭐⭐⭐<br>⭐⭐⭐⭐⭐', '⭐⭐⭐⭐⭐<br>⭐⭐⭐'], o: [17, 18, 19], a: 18 },
-        { t: 'count', q: '¿Qué número falta?', rows: ['15 16 ❓ 18'], o: [14, 17, 19], a: 17 },
+        { t: 'count', q: 'Killa pegó estrellas. ¿Cuántas hay? Di «diez» y sigue contando.', rows: ['⭐⭐⭐⭐⭐<br>⭐⭐⭐⭐⭐', '⭐⭐⭐⭐⭐<br>⭐⭐⭐'], o: [17, 18, 19], a: 18 },
+        { t: 'count', q: '¿Qué número falta?', rows: [nums('15 16 ❓ 18')], o: [14, 17, 19], a: 17 },
         { t: 'say', q: '¿Qué es más rápido: contar todo desde el 1 o empezar en el 10? ¿Por qué?', a: 'Empezar en el 10, porque ya sé que ese grupo tiene 10.' },
       ],
       tip: 'Guarden tapitas en vasitos de 10: «un vaso lleno y 4 sueltas son 14». Así entiende cómo se forman los números del 11 al 20.',
@@ -57,7 +59,7 @@ module.exports = {
       lu: 'La semana tiene 7 días y siempre van en el mismo orden. Después del domingo, ¡vuelve a empezar el lunes!',
       intro: `<b>Lo que hace Valentina cada día</b><div style="display:grid;grid-template-columns:repeat(7,1fr);gap:1.6mm;margin-top:2mm">${WEEK.map(([d, e]) => `<div style="background:#fff;border-radius:2.5mm;padding:1.6mm .5mm;text-align:center"><div class="f" style="font-size:9.5pt">${d}</div><div class="emoji" style="font-size:21pt;margin-top:1mm">${e}</div></div>`).join('')}</div>`,
       qs: [
-        { t: 'pic', q: '¿Qué día juega fútbol Valentina? Busca la pelota.', o: [['📅', 'lunes'], ['📅', 'miércoles'], ['📅', 'sábado']], a: 1 },
+        { t: 'pic', q: '¿Qué día juega fútbol Valentina? Busca la pelota.', o: [['🗓️', 'lunes'], ['🗓️', 'miércoles'], ['🗓️', 'sábado']], a: 1 },
         { t: 'pic', q: 'Hoy es sábado y Valentina va al mercado. ¿Qué hará mañana?', o: [['🎨', 'pintar'], ['👵', 'ver a la abuela'], ['🍳', 'cocinar']], a: 1 },
         { t: 'count', q: '¿Cuántos días tiene la semana? Cuenta los dibujos.', rows: ['🎨🎵⚽📚🍳🛒👵'], o: [5, 6, 7], a: 7 },
         { t: 'say', q: 'Di los días de la semana en orden, empezando por el lunes. ¿Qué día es hoy? ¿Y qué día fue ayer?', a: 'Lunes, martes, miércoles, jueves, viernes, sábado y domingo. Hoy y ayer dependen del día en que lo hagan.' },
@@ -76,10 +78,10 @@ module.exports = {
       tip: 'Antes de calcular, pídele que te cuente la historia en orden: «primero había…, luego…, al final…». Si entiende la historia, el cálculo le saldrá solo.',
     },
     {
-      title: 'Torres de bloques', skill: '¿Cuántos más?', art: '🧱',
+      title: 'Filas de bloques', skill: '¿Cuántos más?', art: '🧱',
       lu: 'Empareja uno de arriba con uno de abajo. ¡Los que se quedan solitos son los que hay de más!',
       qs: [
-        { t: 'count', q: 'Tito hizo una torre azul y Coco una torre roja. ¿Cuántos bloques más tiene la torre azul?', rows: ['🟦🟦🟦🟦🟦🟦🟦<br>🟥🟥🟥🟥'], o: [2, 3, 4], a: 3 },
+        { t: 'count', q: 'Tito armó una fila de bloques azules y Coco una de bloques rojos. ¿Cuántos bloques más tiene la fila azul?', rows: ['🟦🟦🟦🟦🟦🟦🟦<br>🟥🟥🟥🟥'], o: [2, 3, 4], a: 3 },
         { t: 'count', q: 'En el jardín hay 9 flores rosadas y 5 girasoles. ¿Cuántas flores rosadas más que girasoles hay?', rows: ['🌸🌸🌸🌸🌸🌸🌸🌸🌸<br>🌻🌻🌻🌻🌻'], o: [3, 4, 5], a: 4 },
         { t: 'pic', q: 'Lu juntó 12 hojas y Pipa juntó 15. ¿Quién juntó más hojas?', o: [['🦉', 'Lu'], ['🐢', 'Pipa']], a: 1 },
         { t: 'say', q: '¿Cómo supiste cuántas flores más había? Explícaselo a mamá.', a: 'Emparejé cada flor rosada con un girasol y conté las que se quedaron sin pareja: 4.' },
@@ -92,7 +94,7 @@ module.exports = {
       qs: [
         { t: 'pic', q: 'Tiene 4 patas, le encanta el queso y no es un ratón. ¿Quién es?', o: [['🐭', 'Tito'], ['🦉', 'Lu'], ['🐶', 'Coco']], a: 2 },
         { t: 'pic', q: 'Pienso en un número. Va después del 5 y antes del 7. ¿Cuál es?', o: [['4️⃣', 'cuatro'], ['6️⃣', 'seis'], ['8️⃣', 'ocho']], a: 1 },
-        { t: 'count', q: 'Es mayor que 10, es menor que 13 y no es el 11. ¿Qué número es?', rows: ['10 11 12 13'], o: [11, 12, 13], a: 12 },
+        { t: 'count', q: 'Es mayor que 10, es menor que 13 y no es el 11. ¿Qué número es?', rows: [nums('10 11 12 13')], o: [11, 12, 13], a: 12 },
         { t: 'say', q: '¿Qué pista te ayudó más a descubrir que era Coco? ¿Por qué?', a: '«No es un ratón», porque así ya no podía ser Tito. Y Lu no tiene 4 patas.' },
       ],
       tip: 'Jueguen a las adivinanzas con cosas de la casa: «es redondo, está en la cocina y no es un plato». Pensar con pistas entrena la lógica.',
@@ -102,7 +104,7 @@ module.exports = {
       lu: 'Contar de 2 en 2 es más rápido. Di bajito un número y fuerte el siguiente: uno, ¡DOS!, tres, ¡CUATRO!',
       qs: [
         { t: 'count', q: 'Cuatro niños dejaron sus zapatillas en la puerta. Cuenta de 2 en 2. ¿Cuántas zapatillas hay?', rows: ['👟👟', '👟👟', '👟👟', '👟👟'], o: [6, 8, 10], a: 8 },
-        { t: 'seq', q: 'Contamos de 2 en 2. ¿Qué número sigue?', row: '2 4 6 ❓', o: [['7️⃣', 'siete'], ['8️⃣', 'ocho'], ['🔟', 'diez']], a: 1 },
+        { t: 'seq', q: 'Contamos de 2 en 2. ¿Qué número sigue?', row: nums('2 4 6 ❓'), o: [['7️⃣', 'siete'], ['8️⃣', 'ocho'], ['🔟', 'diez']], a: 1 },
         { t: 'count', q: 'Cada gallina tiene 2 patas. ¿Cuántas patas tienen estas 3 gallinas?', rows: ['🐔', '🐔', '🐔'], o: [3, 5, 6], a: 6 },
         { t: 'say', q: '¿Cuántos ojos hay en tu familia? Cuéntalos de 2 en 2.', a: 'Depende de la familia: por ejemplo, 4 personas tienen 2, 4, 6, 8 ojos.' },
       ],

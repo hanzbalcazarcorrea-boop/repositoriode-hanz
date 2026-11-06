@@ -4,12 +4,12 @@ const T = 'font-family="Nunito" font-weight="700" fill="#1E2A5A"';
 // Biohuerto en forma de L (10 m × 8 m, con un rectángulo de 6 m × 4 m recortado arriba a la derecha).
 const huerto = `<svg viewBox="0 0 160 108" style="width:44mm;flex:none">
   <polygon points="30,12 70,12 70,52 130,52 130,92 30,92" fill="#E3F4E8" stroke="#3E8E5C" stroke-width="1.6" stroke-linejoin="round"/>
-  <text x="50" y="8.5" font-size="8" text-anchor="middle" ${T}>4 m</text>
-  <text x="26" y="55" font-size="8" text-anchor="end" ${T}>8 m</text>
-  <text x="80" y="103" font-size="8" text-anchor="middle" ${T}>10 m</text>
-  <text x="134" y="75" font-size="8" text-anchor="start" ${T}>4 m</text>
-  <text x="100" y="48" font-size="9" text-anchor="middle" font-family="Nunito" font-weight="800" fill="#C2620A">?</text>
-  <text x="75" y="35" font-size="9" text-anchor="start" font-family="Nunito" font-weight="800" fill="#C2620A">?</text>
+  <text x="50" y="9" font-size="10" text-anchor="middle" ${T}>4 m</text>
+  <text x="26" y="55" font-size="10" text-anchor="end" ${T}>8 m</text>
+  <text x="80" y="103" font-size="10" text-anchor="middle" ${T}>10 m</text>
+  <text x="134" y="75" font-size="10" text-anchor="start" ${T}>4 m</text>
+  <text x="100" y="48" font-size="11" text-anchor="middle" font-family="Nunito" font-weight="800" fill="#C2620A">?</text>
+  <text x="75" y="35" font-size="11" text-anchor="start" font-family="Nunito" font-weight="800" fill="#C2620A">?</text>
 </svg>`;
 
 // Diagrama de Venn vacío para completar.
@@ -49,7 +49,7 @@ module.exports = {
       qs: [
         { t: 'prob', q: 'Una casaca cuesta S/ 200. Esta semana tiene 20 % de descuento y, si pagas en efectivo, te descuentan un 10 % más sobre el nuevo precio. ¿Cuánto pagas en efectivo?', scaffold: true, a: '20 % de 200 = 40; 200 − 40 = 160. 10 % de 160 = 16; 160 − 16 = 144. Pagas S/ 144.' },
         { t: 'choice', q: 'Zara dice: «20 % y luego 10 % es lo mismo que 30 % de descuento». ¿Tiene razón?', o: ['Sí, porque 20 + 10 = 30.', 'No: con 30 % pagarías S/ 140, y en realidad pagas S/ 144.', 'No: con 30 % pagarías más que con los dos descuentos.'], a: 1 },
-        { t: 'prob', q: 'El pasaje de la combi de Mateo costaba S/ 2 y subió un 25 %. ¿Cuánto cuesta ahora? ¿Cuánto gastará Mateo en 20 viajes?', a: '25 % de 2 = 0,50; 2 + 0,50 = S/ 2,50. 20 × 2,50 = S/ 50 en 20 viajes.' },
+        { t: 'prob', q: 'El taller de música de Mateo costaba S/ 40 al mes y subió un 25 %. ¿Cuánto cuesta ahora? ¿Cuánto pagará Mateo en 6 meses con el nuevo precio?', a: '25 % de 40 = 40 ÷ 4 = 10; 40 + 10 = S/ 50 al mes. 6 × 50 = S/ 300 en 6 meses.' },
         { t: 'open', q: 'Un precio sube 10 % y después baja 10 %. ¿Vuelve al precio inicial? Prueba con S/ 100 y explica.', lines: 2, a: 'No. 100 + 10 = 110; 10 % de 110 = 11; 110 − 11 = 99. Termina en S/ 99: el segundo 10 % se calcula sobre un precio más alto.' },
       ],
       tip: 'Cuando vean una oferta del tipo «20 % + 10 % adicional», pídele que calcule el precio final antes de llegar a la caja y que luego lo compare con la boleta.',
@@ -60,7 +60,7 @@ module.exports = {
       qs: [
         { t: 'prob', q: 'En la comunidad de Killa organizan una minga para limpiar el canal de riego. Si 6 personas lo limpian en 8 horas, ¿cuánto tardarían 12 personas trabajando al mismo ritmo?', scaffold: true, a: 'Es inversa: el doble de personas tarda la mitad. 6 × 8 = 48; 48 ÷ 12 = 4. Tardarían 4 horas.' },
         { t: 'prob', q: 'Para el almuerzo de la minga compran panes: 30 panes cuestan S/ 6. ¿Cuánto cuestan 75 panes?', a: 'Es directa: cada pan cuesta 6 ÷ 30 = S/ 0,20; 75 × 0,20 = S/ 15.' },
-        { t: 'tf', q: 'Marca V o F.', items: [['Si 4 caños iguales llenan un tanque en 6 horas, 8 caños lo llenan en 3 horas.', true], ['Si un carro va más rápido, tarda más en llegar.', false], ['Si 1 kg de papa cuesta S/ 2,50, 4 kg cuestan S/ 10.', true]] },
+        { t: 'tf', q: 'Marca V o F.', items: [['Si 4 caños iguales llenan un tanque en 6 horas, 8 caños lo llenan en 3 horas.', true], ['Si un carro va más rápido por el mismo camino, tarda más en llegar.', false], ['Si 1 kg de papa cuesta S/ 2,50, 4 kg cuestan S/ 10.', true]] },
         { t: 'open', q: '¿Cómo supiste que el problema 1 era de proporción inversa?', lines: 1, a: 'Porque si hay más personas, el tiempo disminuye: el doble de personas tarda la mitad.' },
       ],
       tip: 'Jueguen a «¿directa o inversa?»: más invitados, ¿más o menos torta para cada uno?; más velocidad, ¿más o menos tiempo? Pídele que siempre justifique su respuesta.',
@@ -137,8 +137,8 @@ module.exports = {
       qs: [
         { t: 'prob', q: 'En la bodega venden arroz en dos presentaciones: una bolsa de 5 kg a S/ 19 y una bolsa de 2 kg a S/ 8,20. ¿Cuál conviene más? ¿Cuánto se ahorra por kilo?', scaffold: true, a: '19 ÷ 5 = S/ 3,80 el kilo; 8,20 ÷ 2 = S/ 4,10 el kilo. Conviene la bolsa de 5 kg: se ahorran 4,10 − 3,80 = S/ 0,30 por kilo.' },
         { t: 'prob', q: 'Una oferta dice: «Lleva 3 cuadernos y paga 2». Cada cuaderno cuesta S/ 4,50. Renata necesita 6 cuadernos. ¿Cuánto paga con la oferta? ¿Cuánto ahorra?', a: 'Por 6 cuadernos paga solo 4: 4 × 4,50 = S/ 18. Sin oferta pagaría 6 × 4,50 = S/ 27. Ahorra 27 − 18 = S/ 9.' },
-        { t: 'choice', q: 'Un jugo de 1 litro cuesta S/ 5,40 y uno de 250 mL cuesta S/ 1,50. ¿Cuál conviene más?', o: ['el de 1 litro', 'el de 250 mL', 'cuestan lo mismo por litro'], a: 0 },
-        { t: 'open', q: 'Valentina dice: «La bolsa más grande siempre conviene». ¿Estás de acuerdo? Da una razón.', lines: 2, a: 'No siempre: hay que comparar el precio por unidad (en el jugo, 4 × 1,50 = S/ 6 el litro en botellitas). Además, si no vas a usar todo, lo grande se puede desperdiciar.' },
+        { t: 'choice', q: 'Un jugo de 1 litro cuesta S/ 6,40 y uno de 250 mL cuesta S/ 1,50. ¿Cuál sale más barato por litro?', o: ['el de 1 litro', 'el de 250 mL', 'cuestan lo mismo por litro'], a: 1 },
+        { t: 'open', q: 'Valentina dice: «La presentación más grande siempre conviene». ¿Estás de acuerdo? Da una razón.', lines: 2, a: 'No siempre: hay que comparar el precio por unidad. En el jugo, 4 botellitas de 250 mL (1 litro) cuestan 4 × 1,50 = S/ 6, menos que los S/ 6,40 del litro. Además, si no vas a usar todo, lo grande se puede desperdiciar.' },
       ],
       tip: 'En la próxima compra, elijan dos presentaciones de un mismo producto y pídele que descubra cuál conviene. Muchas veces la respuesta sorprende.',
     },
@@ -148,7 +148,7 @@ module.exports = {
       qs: [
         { t: 'prob', q: 'Zara resolvió muy rápido: «De 60 exploradores, 3/4 fueron a la selva. ¿Cuántos fueron? 60 ÷ 3 = 20; 20 × 4 = 80 exploradores». ¿Qué error cometió? Resuélvelo bien.', scaffold: true, a: 'Invirtió los números: dividió entre 3 y multiplicó por 4. Además, 80 es más que los 60 que había: ¡no tiene sentido! Bien: 60 ÷ 4 = 15; 15 × 3 = 45 exploradores.' },
         { t: 'open', q: 'Zara escribió: «Nina tenía S/ 50 y gastó S/ 18,50 en un libro. Le quedan 50 − 18,50 = S/ 32,50». ¿Está bien? ¿Cómo lo puedes comprobar?', lines: 2, a: 'Está mal: 50 − 18,50 = 31,50. Se comprueba sumando: 31,50 + 18,50 = 50; en cambio, 32,50 + 18,50 = 51.' },
-        { t: 'prob', q: 'Zara escribió: «Un polo de S/ 80 tiene 15 % de descuento. Pago 80 − 15 = S/ 65». Encuentra el error y corrígelo.', a: 'Restó 15 soles en vez del 15 %. 10 % de 80 = 8 y 5 % = 4, así que 15 % = 12. 80 − 12 = S/ 68.' },
+        { t: 'prob', q: 'Zara escribió: «Un buzo de S/ 80 tiene 15 % de descuento. Pago 80 − 15 = S/ 65». Encuentra el error y corrígelo.', a: 'Restó 15 soles en vez del 15 %. 10 % de 80 = 8 y 5 % = 4, así que 15 % = 12. 80 − 12 = S/ 68.' },
         { t: 'say', q: '¿Qué consejo le darías a Zara para que se equivoque menos?', a: 'Respuesta libre. Por ejemplo: leer dos veces, estimar antes de calcular y revisar si la respuesta tiene sentido.' },
       ],
       tip: 'Equivócate a propósito al resolver un problema y pídele que encuentre tu error. Explicar por qué algo está mal es una de las formas más profundas de entenderlo.',

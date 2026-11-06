@@ -5,8 +5,8 @@ module.exports = {
   mode: 'mid',
   lecturas: [
     {
-      title: 'Mi semana con Canela', skill: 'Secuencia de hechos', type: 'Diario', art: '🐶',
-      text: ['<i>El diario de Thiago</i>', '<b>Lunes.</b> ¡Hoy llegó Canela! La adoptamos en un albergue de animales. Es una perrita marrón, con una oreja parada y la otra caída. En el carro tembló todo el camino, así que la envolví en su mantita y le hablé bajito.', '<b>Martes.</b> Canela se escondió debajo de mi cama y no quiso salir en todo el día. Mamá dice que todavía tiene miedo porque todo es nuevo para ella. Le dejé agua y un poquito de comida cerca, y no la molesté.', '<b>Miércoles.</b> ¡Salió solita! Me olió los pies y movió la cola. Después mordió mi zapatilla nueva… Papá le compró un hueso de goma para que muerda eso y no mis cosas.', '<b>Jueves.</b> Le enseñé a sentarse. Lo hizo dos veces seguidas y le di un trocito de galleta para perros como premio. ¡Es muy inteligente!', '<b>Viernes.</b> Hoy Canela durmió a mis pies mientras yo hacía la tarea. Creo que ya sabe que esta es su casa.'],
+      title: 'Mi semana con Canela', skill: 'Secuencia de hechos', type: 'Diario de Thiago', art: '🐶',
+      text: ['<b>Lunes.</b> ¡Hoy llegó Canela! La adoptamos en un albergue. Es una perrita marrón, con una oreja parada y la otra caída. En el carro tembló todo el camino, así que la envolví en su mantita.', '<b>Martes.</b> Canela se escondió debajo de mi cama y no quiso salir. Mamá dice que todavía tiene miedo porque todo es nuevo para ella. Le dejé agua y un poquito de comida cerca.', '<b>Miércoles.</b> ¡Salió solita! Me olió los pies y movió la cola. Después mordió mi zapatilla nueva… Papá le compró un hueso de goma para que muerda eso y no mis cosas.', '<b>Jueves.</b> Le enseñé a sentarse. Lo hizo dos veces seguidas y le di un trocito de galleta para perros como premio. ¡Es muy inteligente!', '<b>Viernes.</b> Hoy Canela durmió a mis pies mientras yo hacía la tarea. Creo que ya sabe que esta es su casa.'],
       qs: [
         { t: 'order', q: 'Ordena lo que pasó del 1 al 4.', o: ['Canela muerde una zapatilla.', 'Canela duerme a los pies de Thiago.', 'Canela se esconde debajo de la cama.', 'Canela aprende a sentarse.'], a: [2, 4, 1, 3] },
         { t: 'choice', q: '¿Qué palabras del diario te ayudan a saber cuándo pasó cada cosa?', o: ['los días de la semana', 'los nombres de la familia', 'los colores de Canela'], a: 0 },
@@ -30,9 +30,9 @@ module.exports = {
       title: 'La llama y la alpaca', skill: 'Parecidos y diferencias', type: 'Texto informativo', art: '🦙',
       text: ['En las alturas de los Andes viven dos animales que muchas personas confunden: la llama y la alpaca. Las dos son camélidos sudamericanos, comen pasto y viven en grupos cuidados por pastores. Además, ambas son animales domésticos, a diferencia de sus parientes salvajes, la vicuña y el guanaco.', 'Pero también tienen diferencias. La llama es más grande y más alta. Sus orejas son largas y curvas, como dos plátanos, y su lana es más gruesa y áspera. Desde hace siglos, los pastores la usan para <b>transportar</b> carga por los caminos de la sierra.', 'La alpaca es más pequeña y tiene las orejas cortas y en punta. Su cabeza está cubierta de lana, como si llevara un flequillo. Su fibra es muy fina y suave, y con ella se tejen chompas, chalinas y mantas abrigadoras.', 'El Perú es el país con más alpacas del mundo.'],
       qs: [
-        { t: 'tf', q: 'Marca V o F.', items: [['La alpaca es más grande que la llama.', false], ['La llama tiene las orejas largas y curvas.', true], ['Las dos comen pasto.', true]] },
+        { t: 'tf', q: 'Marca V o F.', items: [['La alpaca es más grande que la llama.', false], ['La llama tiene las orejas largas y curvas.', true]] },
         { t: 'boxes', q: 'Escribe una cosa en que se parecen y una en que se diferencian.', labels: ['Se parecen en…', 'Se diferencian en…'], a: 'Se parecen: son camélidos, son domésticas, comen pasto o viven en los Andes. Se diferencian: el tamaño, las orejas, el tipo de lana o para qué se usan.' },
-        { t: 'choice', q: 'En el texto, «transportar» significa…', o: ['llevar algo de un lugar a otro', 'tejer una manta', 'comer pasto'], a: 0 },
+        { t: 'choice', q: 'En el texto, «transportar» significa…', o: ['llevar de un lugar a otro', 'tejer una manta', 'comer pasto'], a: 0 },
         { t: 'open', q: 'Quieres una chompa muy suave. ¿De qué animal debería ser la fibra? ¿Por qué?', lines: 1, a: 'De alpaca, porque su fibra es muy fina y suave.' },
       ],
       tip: 'Dibujen juntos un cuadro de dos columnas (llama | alpaca) y anoten en qué se diferencian. Ordenar la información en un cuadro es una gran técnica para estudiar.',
@@ -74,21 +74,21 @@ module.exports = {
       title: '¡Gran Feria de Ciencias!', skill: 'Leer un afiche', type: 'Afiche', art: '🔬',
       text: ['<b style="font-size:1.2em">¡GRAN FERIA DE CIENCIAS!</b><br>Los alumnos de 3.º y 4.º grado te invitan a descubrir los experimentos que prepararon durante dos meses con su profesora. ¡Ven con toda tu familia!', '<b>Cuándo:</b> este viernes, de 9:00 a. m. a 12:30 p. m.<br><b>Dónde:</b> en el patio principal del colegio<br><b>Entrada:</b> libre', '<b>Podrás ver:</b> un volcán que hace erupción con espuma, frejoles que germinan sin tierra, un arcoíris dentro de un vaso y un robot hecho con material reciclado.', '<b>Actividades especiales:</b><br>10:00 a. m. · Taller de burbujas gigantes (para niños de 6 a 10 años, con un adulto)<br>11:30 a. m. · Premiación del mejor experimento', '<b>Importante:</b> el taller tiene solo 30 cupos. Inscríbete en la dirección del colegio hasta el jueves. Habrá venta de jugos y queques a S/ 2,50 para juntar fondos para el paseo de fin de año.', '¡Trae tu curiosidad y todas tus preguntas!'],
       qs: [
-        { t: 'choice', q: '¿Para qué se escribió este afiche?', o: ['para invitar a la feria y dar sus datos', 'para enseñar a hacer un volcán', 'para contar cómo fue la feria del año pasado'], a: 0 },
+        { t: 'choice', q: '¿Para qué se escribió este afiche?', o: ['para invitar a la feria', 'para enseñar un experimento', 'para contar una historia'], a: 0 },
         { t: 'open', q: '¿A qué hora debes estar en la feria si quieres ver la premiación?', lines: 1, a: 'A las 11:30 a. m. (mejor un poquito antes).' },
         { t: 'open', q: 'Tu hermano tiene 4 años. ¿Puede participar en el taller de burbujas? ¿Por qué?', lines: 1, a: 'No, porque el taller es para niños de 6 a 10 años.' },
-        { t: 'tf', q: 'Marca V o F.', items: [['Hay que pagar para entrar a la feria.', false], ['Para el taller hay que inscribirse antes.', true], ['Lo que se junte con los jugos es para el paseo.', true]] },
+        { t: 'tf', q: 'Marca V o F.', items: [['Hay que pagar para entrar a la feria.', false], ['Para el taller hay que inscribirse antes.', true]] },
       ],
       tip: 'Cuando vean un afiche o un aviso en la calle, pídele que encuentre qué es, cuándo, dónde y cuánto cuesta. Es leer para resolver algo de la vida real.',
     },
     {
       title: 'La reseña de Valentina', skill: 'Hecho u opinión', type: 'Reseña', art: '📚',
-      text: ['<b>Libro:</b> <i>El secreto del árbol de lúcuma</i>, escrito por la lechuza Lu<br><b>Reseña de:</b> Valentina, 4.º grado', 'Este libro cuenta la historia de Wayra, una niña que pasa sus vacaciones en la casa de su abuela, en Ayacucho. En el jardín hay un árbol de lúcuma muy viejo. Una noche, Wayra descubre una cajita escondida entre sus raíces y tendrá que averiguar quién la guardó allí y por qué.', 'El libro tiene 12 capítulos y dibujos a color en cada página. Yo lo leí en cuatro días. Creo que es el libro más emocionante que he leído este año. Los dibujos son preciosos, sobre todo el de la abuela contando cuentos junto al fogón.', 'Lo que menos me gustó fue el final, porque terminó demasiado rápido. ¡Me quedé con ganas de saber más!', 'Se lo recomiendo a todos los niños de mi edad que disfrutan de los misterios. Lo encuentras en la biblioteca del colegio. Le pongo cuatro estrellas de cinco.'],
+      text: ['<b>Libro:</b> <i>El secreto del árbol de lúcuma</i>, escrito por la lechuza Lu<br><b>Reseña de:</b> Valentina, 4.º grado', 'Este libro cuenta la historia de Wayra, una niña que pasa sus vacaciones en la casa de su abuela, en Ayacucho. En el jardín hay un árbol de lúcuma muy viejo. Una noche, Wayra descubre una cajita escondida entre sus raíces. ¿Quién la guardó allí?', 'El libro tiene 12 capítulos y dibujos a color en cada página. Yo lo leí en cuatro días. Creo que es el libro más emocionante que he leído este año. Los dibujos son preciosos, sobre todo el de la abuela contando cuentos junto al fogón.', 'Lo que menos me gustó fue el final, porque terminó demasiado rápido. ¡Me quedé con ganas de saber más!', 'Se lo recomiendo a todos los niños de mi edad que disfrutan de los misterios. Lo encuentras en la biblioteca del colegio. Le pongo cuatro estrellas de cinco.'],
       qs: [
-        { t: 'ho', q: 'Marca H si es un hecho u O si es una opinión.', items: [['El libro tiene 12 capítulos.', 'H'], ['Es el libro más emocionante del año.', 'O'], ['Los dibujos son preciosos.', 'O'], ['El libro está en la biblioteca del colegio.', 'H']] },
+        { t: 'ho', q: 'Marca H si es un hecho u O si es una opinión.', items: [['El libro tiene 12 capítulos.', 'H'], ['Los dibujos son preciosos.', 'O'], ['El libro está en la biblioteca del colegio.', 'H']] },
         { t: 'open', q: '¿Valentina recomienda el libro? ¿Cómo lo sabes?', lines: 1, a: 'Sí: dice que se lo recomienda a los niños que disfrutan de los misterios y le pone cuatro estrellas.' },
         { t: 'open', q: '¿Por qué crees que no le puso cinco estrellas?', lines: 1, a: 'Porque no le gustó que el final terminara tan rápido.' },
-        { t: 'choice', q: '¿Para qué sirve una reseña?', o: ['para opinar sobre un libro y ayudar a otros a elegir', 'para contar un chiste', 'para dar instrucciones'], a: 0 },
+        { t: 'choice', q: '¿Para qué sirve una reseña?', o: ['para opinar sobre un libro', 'para contar un chiste', 'para dar instrucciones'], a: 0 },
       ],
       tip: 'Pregúntale: «¿esto se puede comprobar?». Contar los capítulos es un hecho; decir que un libro es emocionante es una opinión. Después, pídele su opinión del último libro que leyeron juntos.',
     },
@@ -97,7 +97,7 @@ module.exports = {
       text: ['¿Sabías que el chocolate nace en un árbol? Se llama cacao y crece en lugares cálidos y húmedos, como la selva peruana. En regiones como San Martín, Junín y Cusco, muchas familias lo cultivan en sus chacras.', 'Sus frutos se llaman mazorcas y, aunque parezca raro, crecen pegados al tronco y a las ramas gruesas. Cuando están maduras, los agricultores las abren y sacan las semillas, que están cubiertas por una pulpa blanca y dulce.', 'Luego, dejan las semillas varios días en cajones de madera tapados con hojas de plátano para que se fermenten. Así ganan su sabor. Después, las secan al sol.', 'Las semillas secas viajan a una fábrica, donde las tuestan y las muelen hasta formar una pasta espesa. A esa pasta se le agrega azúcar y, a veces, leche. ¡Así se obtiene el chocolate! La próxima vez que comas uno, piensa en todo el camino que recorrió.'],
       qs: [
         { t: 'order', q: 'Ordena los pasos del 1 al 4.', o: ['Se secan las semillas al sol.', 'Se abren las mazorcas y se sacan las semillas.', 'Se tuestan y se muelen las semillas.', 'Se fermentan las semillas en cajones.'], a: [3, 1, 4, 2] },
-        { t: 'choice', q: '¿Qué título resume mejor el texto?', o: ['Las hojas de plátano', 'Cómo se hace el chocolate desde el cacao', 'Los dulces más ricos del mundo'], a: 1 },
+        { t: 'choice', q: '¿Qué título resume mejor el texto?', o: ['Las hojas de plátano', 'Cómo se hace el chocolate', 'Los dulces del mundo'], a: 1 },
         { t: 'open', q: 'Resume el texto en una o dos oraciones.', lines: 2, a: 'El chocolate se hace con las semillas del cacao: se sacan de las mazorcas, se fermentan, se secan, se tuestan y se muelen.' },
         { t: 'open', q: '¿Crees que el cacao podría crecer en una puna muy fría? ¿Por qué?', lines: 1, a: 'No, porque necesita lugares cálidos y húmedos.' },
       ],
@@ -110,7 +110,6 @@ module.exports = {
         { t: 'choice', q: '¿Para qué escribieron esta carta los alumnos?', o: ['para contar un cuento', 'para pedir que arreglen y mejoren el parque', 'para invitar al alcalde a una fiesta'], a: 1 },
         { t: 'open', q: 'Escribe dos razones que dan los niños para que el alcalde los ayude.', lines: 2, a: 'Los columpios están rotos y uno es peligroso; no hay árboles y el sol quema; no hay tachos y la basura queda en el pasto (dos de ellas).' },
         { t: 'open', q: '¿Qué prometen hacer los niños? ¿Por qué crees que lo escribieron?', lines: 2, a: 'Regar los árboles y cuidar el parque. Para mostrar que también harán su parte y así convencer al alcalde.' },
-        { t: 'tf', q: 'Marca V o F.', items: [['La carta tiene fecha y despedida.', true], ['La carta la escribió un solo niño.', false]] },
       ],
       tip: 'Antes de leer cualquier texto, pregúntale: «¿para qué lo escribió el autor: para contar, para informar, para pedir o para convencer?». Si se animan, escriban juntos una carta de verdad a alguien del barrio.',
     },
