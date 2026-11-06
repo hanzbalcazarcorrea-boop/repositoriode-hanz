@@ -110,14 +110,19 @@ function renderQ(q, i, ed) {
 }
 
 function answer(q) {
+  const r = answerCore(q);
+  return q.ex ? `${r} <i>(${q.ex})</i>` : r;
+}
+
+function answerCore(q) {
   switch (q.t) {
     case 'pic': return q.o[q.a][1];
     case 'choice': return `${LETTERS[q.a]}) ${q.o[q.a]}`;
     case 'tf': return q.items.map(([, v]) => (v ? 'V' : 'F')).join(' · ');
     case 'ho': return q.items.map(([, v]) => v).join(' · ');
-    case 'order': return q.o.map((s, k) => [q.a[k], s]).sort((x, y) => x[0] - y[0]).map(([n, s]) => `${n}) ${s.replace(/^\S+\s(?=[A-ZÁÉÍÓÚ¡¿])/u, '')}`).join(' ');
+    case 'order': return q.o.map((s, k) => [q.a[k], s]).sort((x, y) => x[0] - y[0]).map(([, s]) => s.replace(/^[^\p{L}\p{N}¡¿«]+\s/u, '')).join(' → ');
     case 'match': return q.left.map((l, k) => `${l} → ${q.right[q.a[k] - 1]}`).join(' · ');
-    case 'draw': return 'Dibujo libre.';
+    case 'draw': return q.a || 'Dibujo libre.';
     case 'say': return q.a || 'Respuesta libre, en voz alta.';
     default: return q.a;
   }

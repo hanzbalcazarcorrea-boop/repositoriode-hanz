@@ -36,6 +36,11 @@ const PASOS_PRE = [
 const PROB_FS = { basic: '13pt', mid: '11.5pt', adv: '10.8pt' };
 const box = (title, inner, extra = '') => `<div style="border:1.5px solid ${C.linea};border-radius:3mm;padding:1.6mm 3mm 2mm;background:#fff;display:flex;flex-direction:column;${extra}"><div class="f" style="font-size:8.8pt;color:${C.naranjaOsc}">${title}</div>${inner}</div>`;
 
+// Fila de emojis o de números (los números van en Fredoka, sin separar las cifras).
+const rowSpan = (r, size) => (/\d/.test(r)
+  ? `<span class="f" style="font-size:${size}pt;word-spacing:3mm;font-weight:600;color:${C.azul}">${r}</span>`
+  : `<span class="emoji" style="font-size:${size}pt;letter-spacing:1.5mm">${r}</span>`);
+
 function renderMQ(q, i, ed) {
   const n = `<span class="num" style="width:6mm;height:6mm;font-size:9.5pt;margin-right:2mm">${i + 1}</span>`;
   const headFs = ed.mode === 'pre' ? '12.5pt' : ed.mode === 'adv' ? '10.3pt' : '11pt';
@@ -43,12 +48,12 @@ function renderMQ(q, i, ed) {
   switch (q.t) {
     case 'count':
       return `<div class="qq">${head(q.q)}<div style="padding-left:8mm;display:flex;align-items:center;gap:6mm;flex-wrap:wrap">
-        <div style="display:flex;align-items:center;gap:4mm;background:${C.crema};border-radius:4mm;padding:2.5mm 5mm">${q.rows.map((r) => `<span class="emoji" style="font-size:30pt;letter-spacing:1.5mm">${r}</span>`).join(`<span class="f" style="font-size:26pt;color:${C.naranja}">${q.op || ''}</span>`)}</div>
+        <div style="display:flex;align-items:center;gap:4mm;background:${C.crema};border-radius:4mm;padding:2.5mm 5mm">${q.rows.map((r) => rowSpan(r, 30)).join(`<span class="f" style="font-size:26pt;color:${C.naranja}">${q.op || ''}</span>`)}</div>
         <div style="display:flex;gap:3mm;align-items:center"><span class="tiny muted">Encierra:</span>${q.o.map((v) => `<span class="f" style="width:14mm;height:14mm;border:2px solid ${C.celesteMed};border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:20pt;background:#fff">${v}</span>`).join('')}</div>
       </div></div>`;
     case 'seq':
-      return `<div class="qq">${head(q.q)}<div style="padding-left:8mm;display:flex;align-items:center;gap:6mm">
-        <div style="background:${C.crema};border-radius:4mm;padding:2.5mm 5mm"><span class="emoji" style="font-size:28pt;letter-spacing:1.5mm">${q.row}</span></div>
+      return `<div class="qq">${head(q.q)}<div style="padding-left:8mm;display:flex;align-items:center;gap:4mm 6mm;flex-wrap:wrap">
+        <div style="background:${C.crema};border-radius:4mm;padding:2.5mm 5mm">${rowSpan(q.row, 23)}</div>
         <div style="display:flex;gap:3mm">${q.o.map(([e, l]) => `<div style="width:24mm;border:1.6px solid ${C.linea};border-radius:4mm;padding:1.8mm 1mm;text-align:center;background:#fff"><div class="emoji" style="font-size:20pt">${e}</div><div class="f" style="font-size:9.5pt;color:${C.pizarra};font-weight:500">${l}</div></div>`).join('')}</div>
       </div></div>`;
     case 'prob': {
@@ -71,10 +76,11 @@ function renderMQ(q, i, ed) {
 }
 
 function answerM(q) {
+  const ex = q.ex ? ` <i>(${q.ex})</i>` : '';
   switch (q.t) {
-    case 'count': return String(q.a);
-    case 'seq': return q.o[q.a][1];
-    case 'prob': return q.a;
+    case 'count': return String(q.a) + ex;
+    case 'seq': return q.o[q.a][1] + ex;
+    case 'prob': return q.a + ex;
     default: return baseAnswer(q);
   }
 }
@@ -224,7 +230,7 @@ function respuestasPages(ed, startPage) {
   const pages = [];
   for (let s = 0; s < blocks.length; s += per) {
     pages.push(`<section class="page">
-    ${s === 0 ? `<div class="kick">Para mamá</div><h2>Respuestas</h2><p class="lead">Lo importante no es solo el número final, sino que entienda cómo llegó. Si su camino es distinto pero tiene lógica, ¡celébralo! En los problemas para inventar, cualquier problema bien armado vale.</p>` : `<h2>Respuestas <span class="muted" style="font-size:12pt">(continuación)</span></h2>`}
+    ${s === 0 ? `<div class="kick">Para mamá</div><h2>Respuestas</h2><p class="lead">Lo importante no es solo el número final, sino que entienda cómo llegó. Si su camino es distinto pero tiene lógica, ¡celébralo!${ed.retos.some((r) => /invent/i.test(r.skill)) ? ' En los problemas para inventar, cualquier problema bien armado vale.' : ''}</p>` : `<h2>Respuestas <span class="muted" style="font-size:12pt">(continuación)</span></h2>`}
     <div style="columns:${per === 10 ? 2 : 1};column-gap:5mm">${blocks.slice(s, s + per).join('')}</div>
     ${footer(label(ed), startPage + pages.length)}
   </section>`);
