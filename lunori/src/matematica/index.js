@@ -2,8 +2,23 @@
 const { C, img, spark, star, emptyStars, footer, doc } = require('../base');
 const { renderQ, answer: baseAnswer, writeLines, PASTEL } = require('../comprension').helpers;
 
-const EDITIONS = [require('./data-5'), require('./data-67'), require('./data-89'), require('./data-1012')];
-const label = (ed) => `Súper Mate · Problemas · ${ed.age}`;
+const fs = require('fs');
+const path = require('path');
+
+// Tres niveles por edad. Nivel 1 = data-<edad>.js · Niveles 2 y 3 = data-<edad>-n2.js / data-<edad>-n3.js
+const LEVELS = [null, 'Despegue', 'Vuelo', 'Súper mate'];
+const LEVEL_DESC = [null,
+  'Para empezar: problemas de un paso, con muchos apoyos para ordenar los datos y la pregunta.',
+  'Números más grandes, más problemas de dos pasos y datos que sobran. Ideal si terminó el Nivel 1 o si ya resuelve bien los problemas sencillos.',
+  'Problemas de varios pasos, retos de lógica y preguntas para explicar cómo lo pensó. Ideal si terminó el Nivel 2 o si los problemas le resultan fáciles.'];
+const EDITIONS = [];
+for (const a of ['5', '67', '89', '1012']) {
+  for (const lv of [1, 2, 3]) {
+    const f = path.join(__dirname, lv === 1 ? `data-${a}.js` : `data-${a}-n${lv}.js`);
+    if (fs.existsSync(f)) EDITIONS.push({ ...require(f), level: lv, levelName: LEVELS[lv] });
+  }
+}
+const label = (ed) => `Súper Mate · Problemas · ${ed.age} · Nivel ${ed.level}`;
 
 const PASOS = [
   ['👀', 'Leo', 'Leo el problema dos veces. La segunda, despacito.', C.durazno, C.naranjaOsc],
@@ -105,7 +120,7 @@ function coverPage(ed) {
     <span class="tag" style="background:${C.azul};color:#fff;letter-spacing:.6mm;font-size:8.5pt">CUADERNO DE PROBLEMAS MATEMÁTICOS</span>
     <div class="f" style="font-size:54pt;font-weight:700;color:${C.naranja};margin-top:4mm;line-height:1">Súper Mate</div>
     <div class="f" style="font-size:24pt;font-weight:600;color:${C.azul};margin-top:1.5mm">Leo, entiendo y resuelvo</div>
-    <div style="margin-top:4mm"><span class="tag" style="border:1.6px solid ${C.azul};color:${C.azul};background:#fff;font-size:11pt;padding:1.2mm 5mm">${ed.age}</span></div>
+    <div style="margin-top:4mm"><span class="tag" style="border:1.6px solid ${C.azul};color:${C.azul};background:#fff;font-size:11pt;padding:1.2mm 5mm">Nivel ${ed.level} · ${ed.levelName} · ${ed.age}</span></div>
   </div>
   <div style="position:absolute;left:0;right:0;top:${adv ? 104 : 100}mm;display:flex;justify-content:center">${img(adv ? 'club.jpg' : 'lu-reloj.jpg', adv ? 'width:165mm' : 'width:130mm', 'mult')}</div>
   ${adv ? '' : ['➕', '➖', '✖️', '➗'].map((s, i) => `<div class="emoji" style="position:absolute;font-size:22pt;${['left:22mm;top:112mm', 'right:24mm;top:118mm', 'left:30mm;top:170mm', 'right:28mm;top:178mm'][i]};opacity:.85">${s}</div>`).join('')}
@@ -139,6 +154,7 @@ function holaPage(ed) {
       <li>Un consejo para ti en cada página</li>
       <li>Tabla de progreso, diploma y respuestas explicadas</li></ul></div>
   </div>
+  <div class="note" style="margin-top:3mm"><b>Nivel ${ed.level} · ${ed.levelName}:</b> ${LEVEL_DESC[ed.level]}</div>
   <div class="card" style="background:${C.durazno};margin-top:4mm;display:flex;gap:5mm;align-items:center">
     ${img('lu-saluda.jpg', 'height:30mm', 'mult')}
     <div><h3>De la familia Súper Lector</h3><p class="small" style="margin:0">Súper Lector entrena la fluidez; <b>Súper Lector · Comprensión</b>, a entender lo que lee. <b>Súper Mate</b> lleva esa comprensión a la matemática: leer con atención, separar datos de preguntas y pensar antes de calcular. Pueden alternarlos durante la semana.</p></div>
@@ -188,6 +204,7 @@ function diplomaPage(ed) {
     <div class="kick" style="margin-top:8mm">Diploma</div>
     <div class="f" style="font-size:44pt;font-weight:700;color:${C.naranja};line-height:1.05">Súper Mate</div>
     <div class="f" style="font-size:20pt;color:${C.azul}">Resolvedor de problemas</div>
+    <div style="margin-top:2mm"><span class="tag" style="background:${C.azul};color:#fff;font-size:10pt">Nivel ${ed.level} · ${ed.levelName} · ${ed.age}</span></div>
     <div style="display:flex;justify-content:center;margin:4mm 0">${img('lu-trofeo.jpg', 'height:70mm', 'mult')}</div>
     <p style="font-size:12pt;color:${C.pizarra}">Se otorga con mucho orgullo a</p>
     <div style="margin:5mm auto 2mm;width:130mm;border-bottom:1.5px solid ${C.azul};height:10mm"></div>
@@ -215,11 +232,11 @@ function respuestasPages(ed, startPage) {
   return pages;
 }
 
-function backPage() {
+function backPage(ed) {
   return `<section class="page" style="background:${C.azul};color:#fff;padding:18mm 16mm">
   ${img('lunori-logo.png', 'height:10mm;filter:brightness(0) invert(1)')}
   <h2 style="color:#fff;font-size:26pt;margin-top:10mm">La matemática está<br>en todas partes 💛</h2>
-  <p style="color:#D9DEF2;font-size:11.5pt;max-width:160mm">El mejor cuaderno de problemas es el día a día. Tres ideas para seguir practicando sin que se sienta como tarea:</p>
+  <p style="color:#D9DEF2;font-size:11.5pt;max-width:160mm">${ed.level < 3 ? `Cuando terminen, sigan con el <b style="color:${C.amarilloMed}">Nivel ${ed.level + 1} · ${LEVELS[ed.level + 1]}</b> de Súper Mate para ${ed.age}.` : `<b style="color:${C.amarilloMed}">¡Completaron los 3 niveles de Súper Mate para ${ed.age}!</b>`} Y el mejor cuaderno de problemas es el día a día. Tres ideas para seguir practicando sin que se sienta como tarea:</p>
   <div style="display:flex;flex-direction:column;gap:5mm;margin-top:7mm">
     ${[['🛒', 'En el mercado', 'Dale un presupuesto y que calcule cuánto llevan gastado y cuánto sobra. Pesen la fruta y comparen precios.'], ['🍳', 'En la cocina', 'Dupliquen o reduzcan a la mitad una receta. Medir, repartir y contar porciones es matemática real.'], ['🚌', 'En el camino', 'Jueguen a «¿cuánto falta?»: si salimos a las 7:40 y tardamos 25 minutos, ¿a qué hora llegamos?']].map(([e, a, b]) => `<div style="display:flex;gap:5mm;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:5mm;padding:5mm 6mm"><div class="emoji" style="font-size:22pt">${e}</div><div><h3 style="color:${C.amarilloMed}">${a}</h3><p style="margin:0;color:#E8EBF7;font-size:10.5pt">${b}</p></div></div>`).join('')}
   </div>
@@ -233,13 +250,13 @@ function backPage() {
 }
 
 module.exports = EDITIONS.map((ed) => ({
-  file: `Super-Mate-Problemas-${ed.slug}`,
+  file: `Super-Mate-Problemas-${ed.slug}-Nivel-${ed.level}`,
   html: () => {
     const pages = [coverPage(ed), holaPage(ed), metodoPage(ed), progresoPage(ed)];
     ed.retos.forEach((r, i) => pages.push(retoPage(ed, r, i, pages.length + 1)));
     pages.push(diplomaPage(ed));
     pages.push(...respuestasPages(ed, pages.length + 1));
-    pages.push(backPage());
-    return doc(`Súper Mate · Problemas · ${ed.age}`, pages);
+    pages.push(backPage(ed));
+    return doc(`Súper Mate · Problemas · ${ed.age} · Nivel ${ed.level}`, pages);
   },
 }));

@@ -1,7 +1,22 @@
 // Súper Lector · Comprensión ("Leo y entiendo"): 4 ediciones por edad, mismas franjas que Súper Lector en 21 días.
+const fs = require('fs');
+const path = require('path');
 const { C, img, spark, star, emptyStars, footer, doc, esc } = require('../base');
 
-const EDITIONS = [require('./data-5'), require('./data-67'), require('./data-89'), require('./data-1012')];
+// Tres niveles por edad, con los mismos nombres que Súper Lector en 21 días.
+// Nivel 1 = data-<edad>.js · Niveles 2 y 3 = data-<edad>-n2.js / data-<edad>-n3.js
+const LEVELS = [null, 'Despegue', 'Vuelo', 'Súper lector'];
+const LEVEL_DESC = [null,
+  'Para empezar: textos cortos y preguntas sobre lo que dice el texto, con las primeras preguntas para pensar.',
+  'Textos más largos y variados, más preguntas de inferencia y vocabulario. Ideal si terminó el Nivel 1 o si ya responde bien lo que dice el texto.',
+  'Textos más exigentes y preguntas para pensar, opinar y justificar. Ideal si terminó el Nivel 2 o si ya lee y comprende muy bien para su edad.'];
+const EDITIONS = [];
+for (const a of ['5', '67', '89', '1012']) {
+  for (const lv of [1, 2, 3]) {
+    const f = path.join(__dirname, lv === 1 ? `data-${a}.js` : `data-${a}-n${lv}.js`);
+    if (fs.existsSync(f)) EDITIONS.push({ ...require(f), level: lv, levelName: LEVELS[lv] });
+  }
+}
 
 const PASTEL = [
   { bg: C.durazno, ink: C.naranjaOsc },
@@ -18,6 +33,9 @@ const TXT = {
   mid: { size: '11.6pt', lh: 1.55, font: 'Nunito', weight: 400 },
   adv: { size: '10.6pt', lh: 1.5, font: 'Nunito', weight: 400 },
 };
+
+// En los niveles 2 y 3 los textos son más largos: la letra baja un poco.
+const TXT_LEVEL = { pre: ['19pt', '16.5pt', '15pt'], basic: ['13.5pt', '12.8pt', '12pt'], mid: ['11.6pt', '11.2pt', '10.8pt'], adv: ['10.6pt', '10.4pt', '10.2pt'] };
 
 const TIPS = {
   '¿Quién es?': 'Antes de leer, pregúntale: «¿quién crees que aparece en este cuento?». Así su cabeza ya va buscando la respuesta.',
@@ -56,7 +74,7 @@ const TIPS = {
 const LETTERS = ['a', 'b', 'c', 'd'];
 const writeLines = (n) => `<span style="flex:1;min-height:8.5mm;max-height:12mm;border-bottom:1.2px solid ${C.linea};display:block"></span>`.repeat(n);
 
-function label(ed) { return `Súper Lector · Comprensión · ${ed.age}`; }
+function label(ed) { return `Súper Lector · Comprensión · ${ed.age} · Nivel ${ed.level}`; }
 
 function renderQ(q, i, ed) {
   const n = `<span class="num" style="width:6mm;height:6mm;font-size:9.5pt;margin-right:2mm">${i + 1}</span>`;
@@ -123,7 +141,7 @@ function lecturaPage(ed, L, idx, pageNo) {
       ? 'Lee el texto en voz alta. Si quieres, léelo dos veces. Luego responde.'
       : 'Lee el texto con atención. Puedes volver a él para buscar las respuestas.';
   const textHtml = L.text.map((s) => `<p style="margin-bottom:${isPre ? '1mm' : '2mm'}">${s}</p>`).join('');
-  const tip = TIPS[L.skill];
+  const tip = L.tip || TIPS[L.skill];
   return `<section class="page">
   <div style="background:${p.bg};border-radius:5mm;padding:3.5mm 5mm;display:flex;align-items:center;gap:4mm;">
     <div style="width:15mm;height:15mm;border-radius:50%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;flex:none"><span class="f" style="font-size:6.5pt;color:${p.ink};letter-spacing:.3mm">LECTURA</span><span class="f" style="font-size:16pt;color:${p.ink};line-height:1">${idx + 1}</span></div>
@@ -136,7 +154,7 @@ function lecturaPage(ed, L, idx, pageNo) {
   <div style="display:flex;flex-direction:column;height:calc(297mm - 15mm - 20mm - 24mm)">
   <div style="display:flex;align-items:center;gap:2mm;margin:3.2mm 0 2mm;font-size:9.3pt;color:${C.pizarra}">${spark(9)}<i>${instr}</i></div>
   ${banner}
-  <div style="background:${C.crema};border-radius:5mm;padding:${isPre ? '5mm 7mm' : '4mm 6mm'};font-family:${t.font};font-weight:${t.weight};font-size:${t.size};line-height:${t.lh};color:${C.azul};${L.poem ? 'columns:3;column-gap:6mm;font-size:11.4pt' : ''}">${textHtml}</div>
+  <div style="background:${C.crema};border-radius:5mm;padding:${isPre ? '5mm 7mm' : '4mm 6mm'};font-family:${t.font};font-weight:${t.weight};font-size:${TXT_LEVEL[ed.mode][ed.level - 1]};line-height:${t.lh};color:${C.azul};${L.poem ? 'columns:3;column-gap:6mm;font-size:11.4pt' : ''}">${textHtml}</div>
   <div class="f" style="margin:${isPre ? '4.5mm' : '3.5mm'} 0 2.5mm;font-size:12.5pt;display:flex;align-items:center;gap:2mm">${spark(11)} Ahora responde</div>
   <div style="display:flex;flex-direction:column;flex:1;gap:${isPre ? '4.5mm' : ed.mode === 'adv' ? '2.6mm' : '3.2mm'}">${L.qs.map((q, i) => renderQ(q, i, ed)).join('')}</div>
   <div style="margin-top:auto;display:flex;gap:4mm;align-items:stretch;padding-top:3mm">
@@ -156,7 +174,7 @@ function coverPage(ed) {
     <span class="tag" style="background:${C.naranja};color:#fff;letter-spacing:.6mm;font-size:8.5pt">CUADERNO DE COMPRENSIÓN LECTORA</span>
     <div class="f" style="font-size:50pt;font-weight:700;color:${C.naranja};margin-top:4mm;line-height:1">Súper Lector</div>
     <div class="f" style="font-size:30pt;font-weight:600;color:${C.azul};margin-top:1mm">Leo y entiendo</div>
-    <div style="margin-top:4mm"><span class="tag" style="border:1.6px solid ${C.azul};color:${C.azul};background:#fff;font-size:11pt;padding:1.2mm 5mm">${ed.age}</span></div>
+    <div style="margin-top:4mm"><span class="tag" style="border:1.6px solid ${C.azul};color:${C.azul};background:#fff;font-size:11pt;padding:1.2mm 5mm">Nivel ${ed.level} · ${ed.levelName} · ${ed.age}</span></div>
   </div>
   <div style="position:absolute;left:0;right:0;top:100mm;display:flex;justify-content:center">${img(ed.mode === 'adv' ? 'club.jpg' : 'lu-lee.jpg', ed.mode === 'adv' ? 'width:165mm' : 'width:132mm', 'mult')}</div>
   <div style="position:absolute;left:18mm;right:18mm;bottom:16mm;background:#fff;border-radius:6mm;padding:5mm 7mm;box-shadow:0 2mm 6mm rgba(30,42,90,.08)">
@@ -181,6 +199,7 @@ function holaPage(ed) {
       <p class="small">Es poder contar lo que leyó, encontrar datos, entender palabras nuevas, descubrir lo que el texto no dice directamente y dar su propia opinión. Es la habilidad que más pesa en todas las materias: también en matemática, cuando hay que entender un problema.</p>
       <h3 style="margin-top:3mm">¿Para quién es?</h3>
       <p class="small">${pre ? 'Para niños de 5 años que todavía están aprendiendo a leer. Tú lees el cuento en voz alta y él responde señalando, encerrando o dibujando. Se entrena la comprensión <b>antes</b> de leer solo.' : `Para niños de ${ed.age.replace(' años', '')} años. Las lecturas están pensadas para su edad: cuentos, textos informativos y otros tipos de texto que verá en el colegio.`}</p>
+      <p class="small" style="margin:0"><b style="color:${C.naranjaOsc}">Nivel ${ed.level} · ${ed.levelName}:</b> ${LEVEL_DESC[ed.level]}</p>
     </div>
     <div class="card" style="background:${C.celeste}">
       <h3>Qué incluye</h3>
@@ -253,6 +272,7 @@ function diplomaPage(ed, pageNo) {
     ${img('lunori-logo.png', 'height:10mm')}
     <div class="kick" style="margin-top:8mm">Diploma</div>
     <div class="f" style="font-size:40pt;font-weight:700;color:${C.naranja};line-height:1.05">Súper Lector<br><span style="color:${C.azul};font-size:28pt">de Comprensión</span></div>
+    <div style="margin-top:2mm"><span class="tag" style="background:${C.azul};color:#fff;font-size:10pt">Nivel ${ed.level} · ${ed.levelName} · ${ed.age}</span></div>
     <div style="display:flex;justify-content:center;margin:4mm 0">${img('lu-trofeo.jpg', 'height:70mm', 'mult')}</div>
     <p style="font-size:12pt;color:${C.pizarra}">Se otorga con mucho orgullo a</p>
     <div style="margin:5mm auto 2mm;width:130mm;border-bottom:1.5px solid ${C.azul};height:10mm"></div>
@@ -287,7 +307,7 @@ function sigueePage(ed, pageNo) {
   <h2 style="color:#fff;font-size:26pt;margin-top:10mm">¡Lo lograron! ¿Y ahora?</h2>
   <p style="color:#D9DEF2;font-size:11.5pt;max-width:160mm">Leer bien es un hábito: lo que se practica un poquito cada día, se queda. Estas son tres ideas para seguir el camino.</p>
   <div style="display:flex;flex-direction:column;gap:5mm;margin-top:7mm">
-    ${[['📚', 'Sigan con Súper Lector', 'Si todavía no lo hicieron, empiecen el cuaderno de fluidez de su edad. Si ya lo hicieron, pasen al siguiente nivel (Nivel 2 · Nivel 3).'], ['🌙', 'Un cuento cada noche', 'Lean juntos 10 minutos antes de dormir y hagan una sola pregunta: «¿qué fue lo que más te gustó?». Es la rutina de lectura más poderosa que existe.'], ['🔁', 'Repitan sus lecturas favoritas', 'Releer un texto que ya entiende le da seguridad y mejora su fluidez. Elijan una lectura de este cuaderno y léanla de nuevo en un mes: verán cuánto avanzó.']].map(([e, a, b]) => `<div style="display:flex;gap:5mm;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:5mm;padding:5mm 6mm"><div class="emoji" style="font-size:22pt">${e}</div><div><h3 style="color:${C.amarilloMed}">${a}</h3><p style="margin:0;color:#E8EBF7;font-size:10.5pt">${b}</p></div></div>`).join('')}
+    ${[ed.level < 3 ? ['🚀', `Pasen al Nivel ${ed.level + 1} · ${LEVELS[ed.level + 1]}`, `El siguiente cuaderno de comprensión para ${ed.age} trae textos más largos y preguntas más desafiantes. Y si aún no lo hicieron, alternen con Súper Lector en 21 días, el cuaderno de fluidez de su edad.`] : ['🏆', '¡Completaron los 3 niveles!', 'Ya es un lector que comprende, piensa y opina. Sigan leyendo juntos libros de verdad, y cuando cumpla años, pasen a la siguiente edad de Súper Lector · Comprensión.'], ['🌙', 'Un cuento cada noche', 'Lean juntos 10 minutos antes de dormir y hagan una sola pregunta: «¿qué fue lo que más te gustó?». Es la rutina de lectura más poderosa que existe.'], ['🔁', 'Repitan sus lecturas favoritas', 'Releer un texto que ya entiende le da seguridad y mejora su fluidez. Elijan una lectura de este cuaderno y léanla de nuevo en un mes: verán cuánto avanzó.']].map(([e, a, b]) => `<div style="display:flex;gap:5mm;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:5mm;padding:5mm 6mm"><div class="emoji" style="font-size:22pt">${e}</div><div><h3 style="color:${C.amarilloMed}">${a}</h3><p style="margin:0;color:#E8EBF7;font-size:10.5pt">${b}</p></div></div>`).join('')}
   </div>
   <div style="position:absolute;left:16mm;right:16mm;bottom:30mm;background:#fff;border-radius:6mm;padding:5mm 6mm;display:flex;gap:5mm;align-items:center;color:${C.texto}">
     ${img('frasco-enfokids.jpg', 'height:36mm;border-radius:4mm')}
@@ -299,14 +319,14 @@ function sigueePage(ed, pageNo) {
 }
 
 module.exports = EDITIONS.map((ed) => ({
-  file: `Super-Lector-Comprension-${ed.slug}`,
+  file: `Super-Lector-Comprension-${ed.slug}-Nivel-${ed.level}`,
   html: () => {
     const pages = [coverPage(ed), holaPage(ed), comoPage(ed), progresoPage(ed)];
     ed.lecturas.forEach((l, i) => pages.push(lecturaPage(ed, l, i, pages.length + 1)));
     pages.push(diplomaPage(ed, pages.length + 1));
     pages.push(...respuestasPages(ed, pages.length + 1));
     pages.push(sigueePage(ed, pages.length + 1));
-    return doc(`Súper Lector · Comprensión · ${ed.age}`, pages);
+    return doc(`Súper Lector · Comprensión · ${ed.age} · Nivel ${ed.level}`, pages);
   },
 }));
 
