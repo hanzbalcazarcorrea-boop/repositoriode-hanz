@@ -10,7 +10,7 @@ module.exports = {
       qs: [
         { t: 'pic', q: 'Adivinanza 1: ¿quién es?', o: [['🥔', 'la papa'], ['🌽', 'el choclo'], ['🥕', 'la zanahoria']], a: 1 },
         { t: 'pic', q: 'Adivinanza 2: ¿quién es?', o: [['🐌', 'un caracol'], ['🐢', 'Pipa'], ['🐭', 'Tito']], a: 1 },
-        { t: 'say', q: 'Un caracol también lleva su casa en la espalda. ¿Cómo sabes que la adivinanza 2 es Pipa? (Mamá lo escribe.)', lines: 1, a: 'Porque vive en el Bosque de las Letras y nunca se rinde, como Pipa.' },
+        { t: 'say', q: 'Un caracol también lleva su casa en la espalda. ¿Cómo sabes que la adivinanza 2 es Pipa? (Mamá lo escribe.)', lines: 3, a: 'Porque vive en el Bosque de las Letras y nunca se rinde, como Pipa.' },
       ],
       tip: 'Después de cada respuesta, pregunta «¿cómo lo sabes?» y que te diga la pista. Si contesta «porque sí», vuelvan a leer juntos y busquen la pista con el dedo.',
     },
@@ -30,7 +30,7 @@ module.exports = {
       qs: [
         { t: 'pic', q: '¿Por qué Inti trae la manta?', o: [['🥶', 'la abuela tiene frío'], ['😴', 'Inti quiere dormir'], ['🎂', 'es un cumpleaños']], a: 0 },
         { t: 'pic', q: '¿Cómo es Inti?', o: [['🤗', 'atento y cariñoso'], ['😠', 'gruñón'], ['😴', 'dormilón']], a: 0 },
-        { t: 'say', q: 'La abuela no dijo «tengo frío». ¿Cómo lo supo Inti? (Mamá lo escribe.)', lines: 1, a: 'Porque vio que su abuela se frotaba las manos, y era de noche y hacía frío.' },
+        { t: 'say', q: 'La abuela no dijo «tengo frío». ¿Cómo lo supo Inti? (Mamá lo escribe.)', lines: 3, a: 'Porque vio que su abuela se frotaba las manos, y era de noche y hacía frío.' },
       ],
       tip: 'Pregunta «¿por qué crees que lo hizo?» aunque el cuento no lo diga. Descubrir lo que piensa un personaje por lo que hace es una de las pistas más importantes al leer.',
     },
@@ -40,7 +40,7 @@ module.exports = {
       qs: [
         { t: 'pic', q: '¿Dónde vive el pingüino de Humboldt?', o: [['🏖️', 'en la costa del Perú'], ['❄️', 'en la nieve'], ['🌴', 'en la selva']], a: 0 },
         { t: 'pic', q: '¿Qué puede hacer un pingüino de verdad?', o: [['🐟', 'nadar y atrapar peces'], ['✈️', 'viajar en avión'], ['🧳', 'armar su maleta']], a: 0 },
-        { t: 'say', q: 'El texto 2 es de fantasía: es inventado. ¿Cómo lo sabes? (Mamá lo escribe.)', lines: 1, a: 'Porque un pingüino de verdad no usa sombrero, no arma maletas ni sube a un avión.' },
+        { t: 'say', q: 'El texto 2 es de fantasía: es inventado. ¿Cómo lo sabes? (Mamá lo escribe.)', lines: 3, a: 'Porque un pingüino de verdad no usa sombrero, no arma maletas ni sube a un avión.' },
       ],
       tip: 'En los cuentos de la noche, pregunta: «¿esto puede pasar de verdad?». Separar lo real de lo inventado lo ayuda a saber qué tipo de texto está escuchando.',
     },
@@ -50,7 +50,7 @@ module.exports = {
       qs: [
         { t: 'pic', q: '¿Qué rompe la pelota de Coco?', o: [['🪴', 'una maceta'], ['🥚', 'un huevo'], ['🍽️', 'un plato']], a: 0 },
         { t: 'pic', q: '¿Qué nos enseña este cuento?', o: [['🗣️', 'decir la verdad aunque cueste'], ['🙈', 'esconderse si algo sale mal'], ['🚫', 'no jugar nunca']], a: 0 },
-        { t: 'say', q: '¿Por qué crees que Lu le dio las gracias a Coco? (Mamá lo escribe.)', lines: 1, a: 'Porque Coco dijo la verdad, aunque tenía miedo.' },
+        { t: 'say', q: '¿Por qué crees que Lu le dio las gracias a Coco? (Mamá lo escribe.)', lines: 3, a: 'Porque Coco dijo la verdad, aunque tenía miedo.' },
       ],
       tip: 'El mensaje casi nunca está escrito: pregúntale «¿qué aprendió Coco?» y después «¿qué aprendiste tú?». Si te cuenta algo parecido que le pasó, escúchalo sin regañar.',
     },
@@ -79,8 +79,8 @@ module.exports = {
       text: ['Hola, Pipa:', 'El sábado es mi cumpleaños y haré una fiesta en mi casa del árbol. Empieza a las 4 de la tarde.', 'Ven disfrazada de tu animal favorito. ¡Habrá torta de chocolate y chicha morada!', 'Te espero con mucha alegría.', '<span style="display:block;text-align:right">Tu amigo, Tito</span>'],
       qs: [
         { t: 'pic', q: '¿Para qué escribió Tito este texto?', o: [['🎉', 'para invitar a Pipa'], ['📖', 'para contar un cuento'], ['🍰', 'para dar una receta']], a: 0 },
-        { t: 'pic', q: '¿Cómo debe ir Pipa a la fiesta?', o: [['🦁', 'disfrazada de animal'], ['🎒', 'con su mochila'], ['☂️', 'con paraguas']], a: 0 },
         { t: 'say', q: '¿Cómo sabes que es una invitación y no un cuento? Pista: mira cómo empieza y cómo termina.', a: 'Empieza con «Hola, Pipa», dice cuándo y dónde es la fiesta, y termina con la firma «Tu amigo, Tito».' },
+        { t: 'draw', q: 'Tito le pidió a Pipa ir disfrazada. Dibuja a Pipa con su disfraz de animal.', h: 44 },
       ],
       tip: 'Muéstrale otros textos de la casa: una invitación, la lista del mercado, una receta. Pregunta: «¿para qué sirve este papel?». Cada texto tiene un propósito.',
     },
@@ -90,7 +90,7 @@ module.exports = {
       qs: [
         { t: 'pic', q: '¿Por qué se escapó Pelusa?', o: [['🔓', 'la jaula quedó abierta'], ['🐱', 'un gato la sacó'], ['🌧️', 'empezó a llover']], a: 0 },
         { t: 'pic', q: '¿Dónde encontraron a Pelusa?', o: [['🛏️', 'debajo de la cama'], ['🌳', 'en el jardín'], ['🚿', 'en la ducha']], a: 0 },
-        { t: 'say', q: '¿Por qué crees que ahora Nayra siempre cierra la jaula? (Mamá lo escribe.)', lines: 1, a: 'Porque aprendió que, si la jaula queda abierta, Pelusa se escapa.' },
+        { t: 'say', q: '¿Por qué crees que ahora Nayra siempre cierra la jaula? (Mamá lo escribe.)', lines: 3, a: 'Porque aprendió que, si la jaula queda abierta, Pelusa se escapa.' },
       ],
       tip: 'Usen la frase «por eso»: «Nayra se olvidó de cerrar la jaula, por eso…». Que él la complete. Así une lo que pasó con lo que vino después.',
     },
@@ -100,7 +100,7 @@ module.exports = {
       qs: [
         { t: 'pic', q: '¿A dónde quiere ir Tito?', o: [['🏞️', 'al río'], ['⛰️', 'al cerro'], ['🏖️', 'a la playa']], a: 0 },
         { t: 'pic', q: '¿Por qué Pipa prefiere el cerro?', o: [['👀', 'se ve todo el bosque'], ['💧', 'hay mucha agua'], ['🧀', 'hay queso']], a: 0 },
-        { t: 'say', q: 'Y tú, ¿a dónde irías: al río o al cerro? ¿Por qué? (Mamá lo escribe.)', lines: 1, a: 'Respuesta libre, pero con una razón: «Yo iría al… porque…».' },
+        { t: 'say', q: 'Y tú, ¿a dónde irías: al río o al cerro? ¿Por qué? (Mamá lo escribe.)', lines: 3, a: 'Respuesta libre, pero con una razón: «Yo iría al… porque…».' },
       ],
       tip: 'Cuando dé su opinión, pídele siempre un «porque…». Si dice «porque sí», ayúdalo: «¿qué hay en el río que te gusta?». Dar razones es aprender a pensar.',
     },

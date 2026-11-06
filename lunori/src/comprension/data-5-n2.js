@@ -18,9 +18,9 @@ module.exports = {
       title: '¿Quién toca la puerta?', skill: 'Descubrir con pistas', img: 'pipa.jpg',
       text: ['Toc, toc. Alguien toca la puerta de Pipa.', 'Pipa escucha: «¡Guau, guau!».', 'Por la ventana ve una cola que se mueve.', 'Y algo huele a queso… ¿Quién será?'],
       qs: [
-        { t: 'pic', q: '¿Qué escuchó Pipa?', o: [['🐄', '«¡Muuu!»'], ['🐕', '«¡Guau, guau!»'], ['🐸', '«¡Croac!»']], a: 1 },
         { t: 'pic', q: '¿Quién toca la puerta de Pipa?', o: [['🐭', 'Tito'], ['🐶', 'Coco'], ['🦉', 'Lu']], a: 1 },
         { t: 'say', q: '¿Cómo supiste que era Coco? Dile a mamá dos pistas.', a: 'Hace «guau, guau», tiene cola y huele a queso (a Coco le encanta el queso).' },
+        { t: 'draw', q: 'Dibuja a Coco tocando la puerta de Pipa.', h: 44 },
       ],
       tip: 'Cuando adivine, pregúntale siempre «¿cómo lo supiste?». Nombrar la pista (el «guau», el queso) le enseña que las respuestas están escondidas en el cuento.',
     },
@@ -50,7 +50,7 @@ module.exports = {
       qs: [
         { t: 'pic', q: '¿Cómo se siente Yaku al final?', o: [['😢', 'triste'], ['🤩', 'orgulloso y feliz'], ['😠', 'enojado']], a: 1 },
         { t: 'pic', q: '¿Por qué se siente así?', o: [['🚲', 'pedaleó solito'], ['🍬', 'le dieron un dulce'], ['🎁', 'le dieron un regalo']], a: 0 },
-        { t: 'say', q: '¿Qué cosa te costó aprender a ti? ¿Cómo te sentiste cuando lo lograste?' },
+        { t: 'say', q: '¿Qué cosa te costó aprender a ti? ¿Cómo te sentiste cuando lo lograste? (Mamá lo escribe.)', lines: 2 },
       ],
       tip: 'Además de nombrar la emoción, pregúntale «¿por qué se siente así?». Unir lo que siente un personaje con lo que le pasó es un gran paso en la comprensión.',
     },
@@ -60,7 +60,7 @@ module.exports = {
       qs: [
         { t: 'pic', q: '¿Qué fruta va en esta ensalada?', o: [['🍇', 'uvas'], ['🍌', 'plátano'], ['🍓', 'fresas']], a: 1 },
         { t: 'order', q: 'Escribe 1, 2 y 3: ¿qué se hace primero?', o: ['🥄 Mezcla con una cuchara.', '🍊 Mamá pela y corta las frutas.', '🍽️ Pon todo en un plato hondo.'], a: [3, 1, 2] },
-        { t: 'say', q: '¿Por qué crees que mamá corta las frutas y no tú?', a: 'Porque el cuchillo puede cortar los dedos: lo usa un adulto.' },
+        { t: 'say', q: '¿Por qué crees que mamá corta las frutas y no tú? (Mamá lo escribe.)', lines: 2, a: 'Porque el cuchillo puede cortar los dedos: lo usa un adulto.' },
       ],
       tip: '¡Prepárenla de verdad! Antes de cada paso, que te diga qué toca hacer mirando el número. Leer para hacer algo también es comprender.',
     },
@@ -68,9 +68,9 @@ module.exports = {
       title: 'El sapito saltarín', skill: 'Leer una rima', type: 'Rima', art: '🐸',
       text: ['Un sapito verde salta en el jardín.<br>Salta que salta, ¡salta sin fin!', 'Ve una mosca y abre la boca…<br>¡Ay, se le escapa la mosca loca!'],
       qs: [
-        { t: 'pic', q: '¿Qué quiere atrapar el sapito?', o: [['🦋', 'una mariposa'], ['🪰', 'una mosca'], ['🐌', 'un caracol']], a: 1 },
-        { t: 'pic', q: '¿Atrapa la mosca?', o: [['😋', 'sí, se la come'], ['💨', 'no, se le escapa']], a: 1 },
+        { t: 'pic', q: '¿El sapito atrapa la mosca?', o: [['😋', 'sí, se la come'], ['💨', 'no, se le escapa']], a: 1 },
         { t: 'pic', q: '«Jardín» rima con «fin». ¿Qué otra palabra rima con «jardín»?', o: [['🦁', 'león'], ['🐬', 'delfín'], ['🐻', 'oso']], a: 1 },
+        { t: 'draw', q: 'Dibuja al sapito verde y a la mosca loca.', h: 44 },
       ],
       tip: 'Lean la rima dos veces y, la segunda, haz una pausa para que él diga la última palabra de cada línea. Las rimas entrenan el oído y la memoria.',
     },
@@ -90,7 +90,7 @@ module.exports = {
       qs: [
         { t: 'pic', q: '¿Qué le pone Valentina a su castillo?', o: [['🐚', 'conchitas'], ['🍬', 'caramelos'], ['🌸', 'flores']], a: 0 },
         { t: 'pic', q: '¿Qué crees que pasará con el castillo?', o: [['🌊', 'la ola lo deshace'], ['🚀', 'sale volando'], ['🏰', 'crece más']], a: 0 },
-        { t: 'say', q: '¿Qué puede hacer Valentina después? Inventa lo que pasa.', a: 'Respuesta libre. Por ejemplo: hace otro castillo más lejos del mar.' },
+        { t: 'draw', q: '¿Qué pasa después? Dibújalo y cuéntaselo a mamá.', h: 44 },
       ],
       tip: 'Detente en «una ola grande» y pregunta: «¿qué crees que va a pasar?». Luego pídele una razón: «¿por qué crees eso?».',
     },
