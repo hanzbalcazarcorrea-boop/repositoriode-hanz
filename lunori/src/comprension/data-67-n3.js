@@ -34,6 +34,7 @@ module.exports = {
         { t: 'match', q: 'Une cada niño con lo que le corresponde.', left: ['Killa', 'Thiago', 'Los dos'], right: ['usa polo y short', 'les encanta jugar fútbol', 'usa chompa y chullo'], a: [3, 1, 2] },
         { t: 'boxes', q: 'Compara a Killa y a Thiago.', labels: ['Se parecen en…', 'Son diferentes en…'], a: 'Se parecen: a los dos les encanta el fútbol. Son diferentes: el clima, la ropa y la casa.' },
         { t: 'open', q: '¿Por qué la casa de Killa tiene paredes gruesas y la de Thiago, ventanas grandes?', lines: 2, a: 'En Puno hace frío y las paredes guardan el calor; en Iquitos hace calor y entra el aire.' },
+        { t: 'say', q: '¿En qué te pareces tú a Killa o a Thiago?', a: 'Respuesta libre.' },
       ],
     },
     {
@@ -49,7 +50,7 @@ module.exports = {
     },
     {
       title: 'Mi hermanito', skill: 'Comparaciones', type: 'Poema', art: '👶', poem: true,
-      text: ['Mi hermanito tiene un año,<br>es chiquito como un frejol,<br>sus cachetes son redondos<br>y calientitos como el sol.<br>Y sus ojos brillan tanto<br>como la luz de un farol.', 'Cuando ríe, su risa suena<br>como un cascabel de cristal;<br>pero cuando llora, ¡qué escándalo!,<br>parece un gallo en el corral.<br>Mamá le canta bajito<br>y vuelve a reír, ¡qué genial!', 'Duerme como un gatito<br>enroscado en su colchón,<br>con sus manitos cerradas<br>como bolitas de algodón.<br>Y cuando me abraza fuerte<br>me crece el corazón.'],
+      text: ['Mi hermanito tiene un año,<br>es chiquito como un frejol,<br>sus cachetes son redondos<br>y calientitos como el sol.<br>Y sus ojos brillan tanto<br>como la luz de un farol.', 'Cuando ríe, su risa suena<br>como un cascabel de cristal;<br>si llora, ¡qué escándalo!,<br>parece un gallo en el corral.<br>Mamá le canta bajito<br>y vuelve a reír, ¡qué genial!', 'Duerme como un gatito<br>enroscado en su colchón,<br>con sus manitos cerradas<br>como bolitas de algodón.<br>Y cuando me abraza fuerte<br>me crece el corazón.'],
       tip: 'Busquen comparaciones en la vida diaria: «esa nube parece un…», «corres como un…». Pregúntale siempre «¿en qué se parecen?» para que explique su comparación.',
       qs: [
         { t: 'choice', q: '«Es chiquito como un frejol» quiere decir que el hermanito…', o: ['es muy pequeño', 'es verde', 'come mucho frejol'], a: 0 },
@@ -60,7 +61,7 @@ module.exports = {
     },
     {
       title: 'La rana del lago', skill: 'La moraleja', type: 'Fábula', art: '🐸',
-      text: ['En el lago Titicaca vivía una rana grande, con la piel llena de arrugas. Los patos se burlaban de ella: —¡Pareces una chompa vieja! —le decían, y se reían.', 'La rana no respondía. Se iba nadando al fondo del lago, donde podía quedarse mucho tiempo gracias a su piel arrugada.', 'Un día, el patito más pequeño jugaba con su piedrita favorita, verde y brillante, y se le cayó al agua. La piedra se hundió hasta el fondo. Los patos se zambulleron una y otra vez, pero el lago era muy hondo y salían sin nada.', 'Entonces la rana bajó despacito y volvió con la piedra. Los patos bajaron la cabeza: —Perdónanos, amiga. Tus arrugas son un tesoro.'],
+      text: ['En el lago Titicaca vivía una rana grande, con la piel llena de arrugas. Los patos se burlaban de ella: —¡Pareces una chompa vieja! —le decían, y se reían.', 'La rana no respondía. Se iba nadando al fondo del lago, donde podía quedarse mucho tiempo gracias a su piel arrugada.', 'Un día, el patito más pequeño jugaba con su piedrita favorita, verde y brillante, y se le cayó al agua. La piedra se hundió hasta el fondo. Los patos se zambulleron una y otra vez, pero el lago era muy hondo y salían sin nada.', 'Entonces la rana bajó despacito y volvió con la piedra. Los patos bajaron la cabeza.', '—Perdónanos, amiga. Tus arrugas son un tesoro.'],
       tip: 'Al terminar una fábula, pregúntale: «¿qué aprendieron los patos?» y «¿qué aprendiste tú?». La moraleja no siempre está escrita: hay que descubrirla.',
       qs: [
         { t: 'choice', q: '¿Por qué se burlaban los patos de la rana?', o: ['porque era muy lenta', 'porque tenía la piel llena de arrugas', 'porque cantaba mal'], a: 1 },
@@ -93,7 +94,7 @@ module.exports = {
     },
     {
       title: 'Dos textos sobre el mango', skill: '¿Para qué se escribió?', type: 'Dos textos', art: '🏷️',
-      text: ['<b>Texto 1</b><br>¡LLEGÓ EL MANGO PIURANO A LA FRUTERÍA DOÑA CHELA! Dulce como la miel y jugoso como ninguno. ¡Es el mango más rico del mundo! Ven hoy y lleva 3 mangos por solo S/ 5. ¡No te lo pierdas!', '<b>Texto 2</b><br>El mango es una fruta que crece en árboles grandes, en lugares donde hace calor. Por fuera tiene una cáscara verde, amarilla o roja, y por dentro, una pulpa amarilla con una pepa grande. El mango tiene vitaminas que ayudan a cuidar nuestro cuerpo, y se puede comer solo o en jugos, helados y postres. En el Perú, la región que produce más mangos es Piura.'],
+      text: ['<b>Texto 1</b><br><b>¡Llegó el mango piurano a la frutería Doña Chela!</b> Dulce como la miel y jugoso como ninguno. ¡Es el mango más rico del mundo! Ven hoy y lleva 3 mangos por solo S/ 5. ¡No te lo pierdas!', '<b>Texto 2</b><br>El mango es una fruta que crece en árboles grandes, en lugares donde hace calor. Por fuera tiene una cáscara verde, amarilla o roja, y por dentro, una pulpa amarilla con una pepa grande. El mango tiene vitaminas que ayudan a cuidar nuestro cuerpo, y se puede comer solo o en jugos, helados y postres. En el Perú, la región que produce más mangos es Piura.'],
       tip: 'Miren juntos un aviso de verdad (en la calle, en una bolsa o en la radio) y pregúntale: «¿qué quiere que hagamos?». Así descubre que no todos los textos se escriben para informar.',
       qs: [
         { t: 'match', q: 'Une cada texto con para qué se escribió.', left: ['Texto 1', 'Texto 2'], right: ['para enseñarnos cómo es el mango', 'para que compremos mangos'], a: [2, 1] },

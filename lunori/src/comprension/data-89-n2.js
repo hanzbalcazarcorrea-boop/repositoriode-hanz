@@ -61,12 +61,12 @@ module.exports = {
     },
     {
       title: 'Aguacero en la selva', skill: 'Comparaciones', type: 'Poema', art: '🌧️', poem: true,
-      text: ['Se oscurece la mañana,<br>suena el trueno allá a lo lejos,<br>los loritos se acurrucan<br>bajo las hojas, en silencio,<br>y las gotas, como canicas,<br>saltan en el techo del abuelo.', 'El río corre apurado<br>como un caballo sin freno,<br>las hojas, como espejos,<br>brillan bajo el aguacero,<br>y el viento silba en las ramas<br>como un flautista travieso.', 'Por fin, la lluvia se cansa<br>y el sol se asoma sin prisa,<br>lento, como un gato dormido<br>que despierta y se estira.<br>La selva, recién bañada,<br>huele a tierra y huele a vida.'],
+      text: ['Se oscurece la mañana,<br>suena un trueno a lo lejos,<br>los loritos se acurrucan<br>bajo las hojas, en silencio,<br>y las gotas, como canicas,<br>saltan en el techo viejo.', 'El río corre apurado<br>como un caballo sin freno,<br>las hojas, como espejos,<br>brillan bajo el aguacero,<br>y el viento silba en las ramas<br>como un flautista travieso.', 'Por fin, la lluvia se cansa<br>y el sol se asoma sin prisa,<br>lento, como un gato dormido<br>que despierta y se estira.<br>La selva, recién bañada,<br>huele a tierra y huele a vida.'],
       qs: [
-        { t: 'open', q: 'Copia una comparación del poema. Pista: busca la palabra «como».', lines: 1, a: 'Por ejemplo: «las gotas, como canicas» o «el río corre como un caballo sin freno».' },
+        { t: 'tf', q: 'Marca V o F.', items: [['El poema tiene tres estrofas.', true], ['Al final del poema sigue lloviendo.', false]] },
         { t: 'match', q: 'Une cada cosa con aquello con lo que se compara en el poema.', left: ['las gotas', 'el río', 'el viento', 'el sol'], right: ['un flautista travieso', 'canicas', 'un gato dormido', 'un caballo sin freno'], a: [2, 4, 1, 3] },
         { t: 'choice', q: '¿Por qué el poema compara el río con un caballo sin freno?', o: ['porque el río es marrón', 'porque el río corre muy rápido y con fuerza', 'porque en el río hay caballos'], a: 1 },
-        { t: 'open', q: 'Inventa tu propia comparación: «La lluvia es como…».', lines: 1, a: 'Respuesta libre.' },
+        { t: 'open', q: 'Inventa tus propias comparaciones: «La lluvia es como…» y «El sol es como…».', lines: 2, a: 'Respuesta libre (dos comparaciones con «como»).' },
       ],
       tip: 'Jueguen a comparar durante el día: «este pan está duro como…», «corres rápido como…». Así descubre que comparar es una forma de pintar imágenes con palabras.',
     },

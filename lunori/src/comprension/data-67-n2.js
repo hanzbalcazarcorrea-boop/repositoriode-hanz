@@ -33,7 +33,7 @@ module.exports = {
       qs: [
         { t: 'choice', q: '¿Por qué Yaku dejó la puerta abierta?', o: ['porque tenía apuro por ir a jugar', 'porque las gallinas tenían calor', 'porque su abuela se lo pidió'], a: 0 },
         { t: 'match', q: 'Une cada causa con su consecuencia.', left: ['Yaku deja la puerta abierta.', 'Las gallinas comen las lechugas.', 'Yaku aprende la lección.'], right: ['La abuela se pone triste.', 'Ahora revisa la puerta dos veces.', 'Las gallinas salen del corral.'], a: [3, 1, 2] },
-        { t: 'open', q: '¿Qué hizo Yaku para arreglar su error?', lines: 1, a: 'Pidió disculpas y ayudó a su abuela a sembrar lechugas nuevas.' },
+        { t: 'open', q: '¿Qué hizo Yaku para arreglar su error?', lines: 2, a: 'Pidió disculpas y ayudó a su abuela a sembrar lechugas nuevas.' },
         { t: 'say', q: '¿Qué pasaría si dejas abierta la puerta de la refrigeradora?', a: 'Respuesta libre (se sale el frío, la comida se malogra…).' },
       ],
     },
@@ -55,7 +55,7 @@ module.exports = {
       qs: [
         { t: 'choice', q: 'A mitad de la subida, ¿cómo se sentía Pipa?', o: ['cansada y desanimada', 'feliz y orgullosa', 'aburrida'], a: 0 },
         { t: 'open', q: '¿Qué palabras de Pipa te lo dicen?', lines: 1, a: '«Soy muy lenta. Nunca voy a llegar» (además, se sentó y suspiró).' },
-        { t: 'open', q: '¿Qué ayudó a Pipa a seguir subiendo?', lines: 1, a: 'Las palabras de Lu: «No importa si vas lenta. Importa que sigas».' },
+        { t: 'open', q: '¿Qué ayudó a Pipa a seguir subiendo?', lines: 2, a: 'Las palabras de Lu: «No importa si vas lenta. Importa que sigas».' },
         { t: 'say', q: '¿Cómo se sintió Pipa al final? ¿Cuándo te has sentido tú así?', a: 'Orgullosa y feliz («¡Lo logré!»). La segunda parte es respuesta libre.' },
       ],
     },
@@ -72,13 +72,13 @@ module.exports = {
     },
     {
       title: 'El viento travieso', skill: 'Leer un poema', type: 'Poema', art: '🪁', poem: true,
-      text: ['El viento llegó a mi barrio<br>silbando una canción,<br>le quitó el sombrero a papá<br>y lo dejó en el balcón.<br>Papá miraba hacia arriba<br>con cara de confusión.', 'Jugó con la ropa tendida,<br>hizo bailar las cortinas,<br>y las hojas secas del parque<br>corrieron por las esquinas.<br>Mamá cerró la ventana<br>y se rieron las vecinas.', 'Yo salí con mi cometa<br>y le grité: —¡Ven a jugar!<br>El viento, que es buen amigo,<br>la hizo subir y bailar.<br>Tan alto voló mi cometa<br>¡que tocó una nube al pasar!'],
+      text: ['El viento llegó a mi barrio<br>silbando una canción,<br>le quitó el sombrero a papá<br>y lo dejó en el balcón.<br>Papá miraba hacia arriba<br>con cara de confusión.', 'Jugó con la ropa tendida,<br>hizo bailar las cortinas,<br>y las hojas secas del parque<br>corrieron por las esquinas.<br>Mamá cerró la ventana<br>y se rieron las vecinas.', 'Yo salí con mi cometa<br>y le grité: —¡Ven a jugar!<br>El viento, mi buen amigo,<br>la hizo subir y bailar.<br>Tan alto voló mi cometa<br>¡que tocó una nube al pasar!'],
       tip: 'Lean el poema dos veces en voz alta, una tú y otra él, marcando el ritmo con palmadas. Luego busquen juntos las palabras que suenan parecido al final.',
       qs: [
         { t: 'choice', q: '¿Quién hace las travesuras en el poema?', o: ['papá', 'el viento', 'las vecinas'], a: 1 },
         { t: 'match', q: 'Une cada cosa con lo que le pasó.', left: ['el sombrero de papá', 'las hojas secas', 'la cometa'], right: ['corrieron por las esquinas', 'subió hasta tocar una nube', 'quedó en el balcón'], a: [3, 1, 2] },
         { t: 'open', q: 'Escribe dos palabras del poema que rimen con «cortinas».', lines: 1, a: 'Esquinas y vecinas.' },
-        { t: 'open', q: '¿Por qué crees que el poema llama «travieso» al viento?', lines: 1, a: 'Porque hace bromas: le quita el sombrero a papá y mueve la ropa, las cortinas y las hojas.' },
+        { t: 'open', q: '¿Por qué crees que el poema llama «travieso» al viento?', lines: 2, a: 'Porque hace bromas: le quita el sombrero a papá y mueve la ropa, las cortinas y las hojas.' },
       ],
     },
     {
