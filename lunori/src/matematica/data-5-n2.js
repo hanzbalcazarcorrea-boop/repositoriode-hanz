@@ -3,7 +3,7 @@
 // Números en fila (letra Fredoka, sin separar las cifras) y patrones largos un poco más pequeños para que quepan junto a las opciones.
 const nums = (s) => `<span style="white-space:nowrap;letter-spacing:0">${s.split(' ').map((x) => (x === '❓' ? x : `<span style="font-family:Fredoka;font-weight:600;color:#1E2A5A">${x}</span>`)).join('<span style="display:inline-block;width:5mm"></span>')}</span>`;
 const pat = (s) => `<span style="font-size:21pt;letter-spacing:1mm;white-space:nowrap">${s}</span>`;
-const RACE = [['🐒', 'mono'], ['🦜', 'guacamayo'], ['🐸', 'rana'], ['🐢', 'Pipa'], ['🦥', 'perezoso']];
+const RACE = [['🐒', 'mono'], ['🦜', 'loro'], ['🐸', 'rana'], ['🐢', 'Pipa'], ['🦥', 'perezoso']];
 
 module.exports = {
   age: '5 años',
@@ -39,7 +39,7 @@ module.exports = {
         { t: 'count', q: 'En la combi van 4 personas. En el paradero suben 3 más. ¿Cuántas personas van ahora?', rows: ['🧑🧑🧑🧑', '🧑🧑🧑'], op: '+', o: [6, 7, 8], a: 7 },
         { t: 'count', q: 'Thiago tiene 6 crayones y su prima le presta 3 más. ¿Cuántos crayones tiene ahora?', rows: ['🖍️🖍️🖍️🖍️🖍️🖍️', '🖍️🖍️🖍️'], op: '+', o: [8, 9, 10], a: 9 },
         { t: 'say', q: 'En la combi van 5 personas. En el paradero no sube nadie. ¿Cuántas personas van ahora?', a: '5 personas: si no llega nadie, queda igual.' },
-        { t: 'draw', q: 'Dibuja 3 flores y luego 2 flores más. ¿Cuántas dibujaste en total?', h: 28 },
+        { t: 'draw', q: 'Dibuja 3 flores y luego 2 flores más. Después, cuenta todas tus flores con el dedo.', h: 28 },
       ],
       tip: 'Enséñale a «seguir contando»: que guarde el primer número en la cabeza y cuente desde ahí con los dedos. Es más rápido que contar todo desde el 1.',
     },
@@ -60,7 +60,7 @@ module.exports = {
       intro: `<b>Así terminó la carrera.</b> El que está más cerca de la meta 🏁 llegó primero.<div style="display:flex;align-items:flex-end;justify-content:center;gap:7mm;margin-top:2mm"><div class="emoji" style="font-size:30pt">🏁</div>${RACE.map(([e, l]) => `<div style="text-align:center"><div class="emoji" style="font-size:27pt">${e}</div><div class="f" style="font-size:9.5pt;margin-top:1mm">${l}</div></div>`).join('')}</div>`,
       qs: [
         { t: 'pic', q: '¿Quién llegó primero?', o: [['🐸', 'rana'], ['🐒', 'mono'], ['🦥', 'perezoso']], a: 1 },
-        { t: 'pic', q: '¿Quién llegó tercero?', o: [['🦜', 'guacamayo'], ['🐢', 'Pipa'], ['🐸', 'rana']], a: 2 },
+        { t: 'pic', q: '¿Quién llegó tercero?', o: [['🦜', 'loro'], ['🐢', 'Pipa'], ['🐸', 'rana']], a: 2 },
         { t: 'pic', q: '¿En qué lugar llegó Pipa?', o: [['2️⃣', 'segunda'], ['4️⃣', 'cuarta'], ['5️⃣', 'quinta']], a: 1 },
         { t: 'say', q: 'Pipa no se rindió y llegó a la meta. ¿Quién llegó justo después de ella? ¿En qué lugar?', a: 'El perezoso, en quinto lugar.' },
       ],
