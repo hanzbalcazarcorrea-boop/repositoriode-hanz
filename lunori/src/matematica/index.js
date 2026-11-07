@@ -266,3 +266,6 @@ module.exports = EDITIONS.map((ed) => ({
     return doc(`Súper Mate · Problemas · ${ed.age} · Nivel ${ed.level}`, pages);
   },
 }));
+
+// Piezas reutilizadas por la prueba de nivel.
+module.exports.helpers = { renderMQ, answerM };

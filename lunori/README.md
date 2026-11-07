@@ -8,6 +8,7 @@ Súper Lector · Comprensión y Súper Mate tienen **4 edades × 3 niveles** (Ni
 |---|---|---|
 | `pdf/Super-Lector-Comprension-<edad>-Nivel-<1|2|3>.pdf` | Comprensión lectora · 5, 6-7, 8-9 y 10-12 años · 12 cuadernos | 17-18 |
 | `pdf/Super-Mate-Problemas-<edad>-Nivel-<1|2|3>.pdf` | Problemas matemáticos · 5, 6-7, 8-9 y 10-12 años · 12 cuadernos | 17-18 |
+| `pdf/Prueba-de-Nivel-Lunori-<edad>.pdf` | Prueba de nivel gratis («¿Qué nivel le toca?»): 6 preguntas de lectura y 6 de matemática, de ★ a ★★★, con tabla de resultado hacia el Nivel 1, 2 o 3 · 4 edades | 4 |
 | `pdf/100-Planes-sin-Pantallas.pdf` | 100 actividades sin pantallas · 3 a 12 años | 18 |
 | `pdf/Kit-Emociones-y-Rutinas.pdf` | Kit de emociones y rutinas visuales · 3 a 10 años | 21 |
 
@@ -41,6 +42,7 @@ El script avisa si algún contenido se sale de la página o si una tarjeta queda
 
 - Textos de las lecturas: `src/comprension/data-<edad>.js` (Nivel 1), `data-<edad>-n2.js` y `data-<edad>-n3.js`. Si creas un archivo de nivel nuevo, el build lo detecta solo. El diseño de las páginas está en `src/comprension/index.js`.
 - Problemas de Súper Mate: `src/matematica/data-<edad>.js`, `-n2.js` y `-n3.js`, igual que en comprensión. El diseño está en `src/matematica/index.js`.
+- Prueba de nivel: `src/prueba-data.js` (preguntas) y `src/prueba.js` (diseño).
 - Las 100 actividades: `src/actividades-data.js`. El diseño está en `src/actividades.js`.
 - El kit: `src/kit-emociones.js`.
 - Colores, tipografías, caritas de emociones y pie de página: `src/base.js`.
